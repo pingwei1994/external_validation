@@ -1,0 +1,442 @@
+,report_id,standard_symptom,symptom_adjacent,output
+0,R001,Diarrhea,"Patient with metastatic melanoma currently receiving nivolumab every 2 weeks. No new symptoms reported. Physical exam unremarkable. No evidence of rash, <symptom> diarrhea </symptom>, or fatigue.","<unused94>thought
+The user wants me to analyze a clinical note and determine if the marked symptom, ""diarrhea"", directly led to steroid treatment or immunotherapy hold/delay.
+
+1.  **Identify the symptom:** The marked symptom is ""diarrhea"".
+2.  **Scan the text for steroid use related to diarrhea:** The text mentions no new symptoms, and specifically states ""No evidence of... diarrhea"". Therefore, there is no mention of steroid use related to diarrhea.
+3.  **Scan the text for immunotherapy hold/delay related to diarrhea:** The text mentions no new symptoms, and specifically states ""No evidence of... diarrhea"". Therefore, there is no mention of immunotherapy hold/delay related to diarrhea.
+4.  **Conclusion:** Neither steroid treatment nor immunotherapy hold/delay was initiated because of the symptom (or lack thereof).
+5.  **Format the output:** Create a JSON object with the symptom, false for both steroid and immunotherapy hold, and ""None"" for evidence.<unused95>```json
+{
+  ""symptom"": ""diarrhea"",
+  ""steroid_for_symptom"": false,
+  ""immunotherapy_hold_for_symptom"": false,
+  ""evidence"": ""No evidence of rash, diarrhea, or fatigue.""
+}
+```"
+1,R001,Fatigue,"Patient with metastatic melanoma currently receiving nivolumab every 2 weeks. No new symptoms reported. Physical exam unremarkable. No evidence of rash, diarrhea, or <symptom> Fatigue </symptom>.","<unused94>thought
+The user wants me to analyze a clinical note and determine if the marked symptom, ""Fatigue"", led to steroid treatment or immunotherapy hold.
+
+1.  **Identify the symptom:** The marked symptom is ""Fatigue"".
+2.  **Scan the text for steroid use related to fatigue:** The text mentions the patient is receiving nivolumab but does not mention any steroid use.
+3.  **Scan the text for immunotherapy hold/delay related to fatigue:** The text mentions the patient is receiving nivolumab every 2 weeks and reports ""No new symptoms reported"". It specifically states ""No evidence of rash, diarrhea, or Fatigue"". This indicates the patient does *not* have fatigue, and therefore, immunotherapy was not held or delayed *because* of fatigue.
+4.  **Conclusion:** Neither steroid treatment nor immunotherapy hold/delay was done *because* of the marked symptom (or lack thereof, as the patient doesn't have it).
+5.  **Format the output:** Create the JSON object with the symptom, false for both steroid and immunotherapy hold, and the evidence. The evidence should reflect the lack of the symptom and lack of intervention.<unused95>```json
+{
+  ""symptom"": ""Fatigue"",
+  ""steroid_for_symptom"": false,
+  ""immunotherapy_hold_for_symptom"": false,
+  ""evidence"": ""No evidence of rash, diarrhea, or Fatigue.""
+}
+```"
+2,R001,Rash,"Patient with metastatic melanoma currently receiving nivolumab every 2 weeks. No new symptoms reported. Physical exam unremarkable. No evidence of <symptom> Rash </symptom>, diarrhea, or fatigue.","<unused94>thought
+The user wants me to act as a medical text reviewer.
+I need to read the provided text and determine if the marked symptom, ""Rash"", directly led to steroid treatment or immunotherapy hold/delay.
+
+1.  **Identify the marked symptom:** The marked symptom is ""Rash"".
+2.  **Analyze the text for steroid use related to the symptom:** The text states ""No evidence of Rash..."". This means there was *no* rash, therefore no steroid treatment *for* the rash.
+3.  **Analyze the text for immunotherapy hold/delay related to the symptom:** The text states ""No evidence of Rash..."". Since there was no rash, there was no immunotherapy hold or delay *because* of the rash.
+4.  **Formulate the JSON output:**
+    *   `symptom`: ""Rash""
+    *   `steroid_for_symptom`: false (no rash, so no steroids for it)
+    *   `immunotherapy_hold_for_symptom`: false (no rash, so no hold for it)
+    *   `evidence`: ""No evidence of Rash"" (This sentence directly relates to the symptom and explains why neither action was taken).
+
+```json
+{
+  ""symptom"": ""Rash"",
+  ""steroid_for_symptom"": false,
+  ""immunotherapy_hold_for_symptom"": false,
+  ""evidence"": ""No evidence of Rash""
+}
+```<unused95>```json
+{
+  ""symptom"": ""Rash"",
+  ""steroid_for_symptom"": false,
+  ""immunotherapy_hold_for_symptom"": false,
+  ""evidence"": ""No evidence of Rash""
+}
+```"
+3,R002,Colitis,"The patient has stage IV non-small cell lung cancer on pembrolizumab monotherapy. Over the past week, developed mild diarrhea and fatigue. Consider immune-mediated <symptom> colitis </symptom>; stool studies pending.","<unused94>thought
+The user wants me to analyze a clinical note and determine if the marked symptom, 'colitis', directly led to steroid treatment or immunotherapy hold.
+
+1.  **Identify the symptom:** The marked symptom is 'colitis'.
+2.  **Analyze the text for steroid use related to colitis:** The note mentions considering immune-mediated colitis, but there's no mention of starting steroids *because* of the colitis.
+3.  **Analyze the text for immunotherapy hold related to colitis:** The note mentions the patient is on pembrolizumab and developed colitis. Immune-mediated colitis is a known reason to hold immunotherapy. However, the note doesn't explicitly state that the immunotherapy was held *because* of the colitis. It only mentions considering the diagnosis.
+4.  **Determine the output:**
+    *   `symptom`: ""colitis""
+    *   `steroid_for_symptom`: false (No mention of steroids being given for colitis)
+    *   `immunotherapy_hold_for_symptom`: false (No mention of immunotherapy being held for colitis)
+    *   `evidence`: ""None"" (Neither action was explicitly stated as being taken due to the colitis in this note)
+
+```json
+{
+  ""symptom"": ""colitis"",
+  ""steroid_for_symptom"": false,
+  ""immunotherapy_hold_for_symptom"": false,
+  ""evidence"": ""None""
+}
+```<unused95>```json
+{
+  ""symptom"": ""colitis"",
+  ""steroid_for_symptom"": false,
+  ""immunotherapy_hold_for_symptom"": false,
+  ""evidence"": ""None""
+}
+```"
+4,R002,Diarrhea,"The patient has stage IV non-small cell lung cancer on pembrolizumab monotherapy. Over the past week, developed mild <symptom> diarrhea </symptom> and fatigue. Consider immune-mediated colitis; stool studies pending.","<unused94>thought
+The user wants me to analyze a clinical note and determine if the marked symptom, ""diarrhea"", directly led to steroid treatment or immunotherapy hold/delay.
+
+1.  **Identify the symptom:** The symptom is ""diarrhea"".
+2.  **Analyze the text for steroid use related to diarrhea:** The text mentions diarrhea but does not mention any steroid treatment.
+3.  **Analyze the text for immunotherapy hold/delay related to diarrhea:** The text mentions the patient is on pembrolizumab (an immunotherapy). It mentions mild diarrhea and fatigue, and the consideration of immune-mediated colitis, which *could* lead to a hold/delay. However, the text says ""Consider immune-mediated colitis; stool studies pending."" This implies a *consideration* and investigation, not a definite decision to hold or delay the immunotherapy *because* of the diarrhea at this point. There's no explicit statement that the immunotherapy was held or delayed due to the diarrhea.
+4.  **Conclusion:**
+    *   Steroid treatment: No mention of steroids related to the diarrhea. -> false
+    *   Immunotherapy hold/delay: The text mentions considering colitis, but no definite hold/delay due to the diarrhea is stated. -> false
+5.  **Construct JSON:**
+
+```json
+{
+  ""symptom"": ""diarrhea"",
+  ""steroid_for_symptom"": false,
+  ""immunotherapy_hold_for_symptom"": false,
+  ""evidence"": ""None""
+}
+```<unused95>```json
+{
+  ""symptom"": ""diarrhea"",
+  ""steroid_for_symptom"": false,
+  ""immunotherapy_hold_for_symptom"": false,
+  ""evidence"": ""None""
+}
+```"
+5,R002,Fatigue,"The patient has stage IV non-small cell lung cancer on pembrolizumab monotherapy. Over the past week, developed mild diarrhea and <symptom> Fatigue </symptom>. Consider immune-mediated colitis; stool studies pending.","<unused94>thought
+The user wants me to act as a medical text reviewer and determine if the marked symptom, ""Fatigue"", directly led to steroid treatment or immunotherapy hold/delay.
+
+1.  **Identify the marked symptom:** The symptom is ""Fatigue"".
+2.  **Scan the text for steroid use:** The text does not mention steroid use.
+3.  **Scan the text for immunotherapy hold/delay:** The text does not mention holding or delaying pembrolizumab.
+4.  **Analyze the relationship:** The text mentions fatigue and diarrhea, considers immune-mediated colitis, and orders stool studies. There is no mention of steroids or immunotherapy changes related to the fatigue.
+5.  **Conclusion:** Neither steroid treatment nor immunotherapy hold/delay was directly caused by the fatigue, based on the provided text.
+
+Therefore:
+*   `steroid_for_symptom`: false
+*   `immunotherapy_hold_for_symptom`: false
+*   `evidence`: ""None"" (as no steroids or immunotherapy hold were mentioned in relation to fatigue).<unused95>```json
+{
+  ""symptom"": ""Fatigue"",
+  ""steroid_for_symptom"": false,
+  ""immunotherapy_hold_for_symptom"": false,
+  ""evidence"": ""None""
+}
+```"
+6,R003,Pruritus,"History of renal cell carcinoma on combination nivolumab and ipilimumab. Reports <symptom> prurit </symptom>ic rash over trunk and extremities, started 5 days ago. No shortness of breath.","<unused94>thought
+The user wants me to analyze a clinical note and determine if the marked symptom, ""pruritic rash"", led to steroid treatment or immunotherapy hold/delay.
+
+1.  **Identify the symptom:** The marked symptom is ""pruritic rash"".
+2.  **Scan for steroid treatment:** The note doesn't mention steroid treatment.
+3.  **Scan for immunotherapy hold/delay:** The note doesn't mention holding or delaying nivolumab and ipilimumab.
+4.  **Evaluate the connection:** The note describes the symptom but doesn't state any action taken *because* of it.
+5.  **Formulate the JSON:**
+    *   `symptom`: ""pruritic rash""
+    *   `steroid_for_symptom`: false (no mention of steroids)
+    *   `immunotherapy_hold_for_symptom`: false (no mention of hold/delay)
+    *   `evidence`: ""None"" (no sentence explicitly links the symptom to either action)<unused95>```json
+{
+  ""symptom"": ""pruritic rash"",
+  ""steroid_for_symptom"": false,
+  ""immunotherapy_hold_for_symptom"": false,
+  ""evidence"": ""None""
+}
+```"
+7,R003,Rash,"History of renal cell carcinoma on combination nivolumab and ipilimumab. Reports pruritic <symptom> Rash </symptom> over trunk and extremities, started 5 days ago. No shortness of breath.","<unused94>thought
+The user wants me to identify if the marked symptom, ""Rash"", led to steroid treatment or immunotherapy hold/delay based on the provided patient note.
+
+1.  **Identify the symptom:** The marked symptom is ""Rash"".
+2.  **Scan for steroid treatment:** The note doesn't mention steroids.
+3.  **Scan for immunotherapy hold/delay:** The note doesn't mention holding or delaying nivolumab/ipilimumab.
+4.  **Determine the cause:** The text does not explicitly state that the rash led to either action. It only describes the rash.
+5.  **Formulate the output:**
+    *   `symptom`: ""Rash""
+    *   `steroid_for_symptom`: false (no mention of steroids)
+    *   `immunotherapy_hold_for_symptom`: false (no mention of hold/delay)
+    *   `evidence`: ""None"" (no sentence indicates either action was taken because of the rash)<unused95>```json
+{
+  ""symptom"": ""Rash"",
+  ""steroid_for_symptom"": false,
+  ""immunotherapy_hold_for_symptom"": false,
+  ""evidence"": ""None""
+}
+```"
+8,R003,Shortness of Breath,"History of renal cell carcinoma on combination nivolumab and ipilimumab. Reports pruritic rash over trunk and extremities, started 5 days ago. No <symptom> shortness of breath </symptom>.","<unused94>thought
+The user wants me to identify if the marked symptom ""shortness of breath"" led to steroid treatment or immunotherapy hold based on the provided text.
+
+1.  **Identify the symptom:** The marked symptom is ""shortness of breath"".
+2.  **Scan the text for steroid use related to the symptom:** The text mentions nivolumab and ipilimumab (immunotherapy), a pruritic rash, but no mention of steroids.
+3.  **Scan the text for immunotherapy hold/delay related to the symptom:** The text mentions nivolumab and ipilimumab, but no mention of holding or delaying it. The patient *doesn't* have shortness of breath.
+4.  **Conclusion:** Since there's no mention of steroid use or immunotherapy hold/delay *because* of shortness of breath, the answer is ""No"" for both.
+
+**JSON Structure:**
+
+```json
+{
+  ""symptom"": ""shortness of breath"",
+  ""steroid_for_symptom"": false,
+  ""immunotherapy_hold_for_symptom"": false,
+  ""evidence"": ""None""
+}
+```<unused95>```json
+{
+  ""symptom"": ""shortness of breath"",
+  ""steroid_for_symptom"": false,
+  ""immunotherapy_hold_for_symptom"": false,
+  ""evidence"": ""None""
+}
+```"
+9,R006,Arthralgia,"Melanoma patient on pembrolizumab reports no new symptoms. Denies diarrhea, rash, or <symptom> joint pain </symptom>. Physical exam normal.","<unused94>thought
+1.  **Identify the symptom:** The symptom is ""joint pain"".
+
+2.  **Scan for steroid treatment related to joint pain:** The text mentions the patient denies joint pain. There is no mention of steroid treatment. Therefore, steroid_for_symptom is false.
+
+3.  **Scan for immunotherapy hold/delay related to joint pain:** The text mentions the patient denies joint pain. There is no mention of immunotherapy hold or delay. Therefore, immunotherapy_hold_for_symptom is false.
+
+4.  **Determine evidence:** The evidence for the decision is the sentence stating the patient *denies* the symptom. However, the prompt asks for evidence supporting the *decision* (that neither event happened *because* of the symptom). Since the symptom was denied and neither event occurred, the most relevant sentence is the one denying the symptom. But the instructions say to only include evidence if the reason is clear, and here the reason is the *absence* of the symptom leading to the absence of treatment/hold. A more accurate reflection of why the decision is 'false' is that neither event is mentioned at all. Let's re-read the prompt: ""If the reason is unclear, answer 'No'"". Here, the reason is *clear* - neither event happened *because* of the symptom (or at all). The evidence is simply the lack of mention of these events in relation to the symptom. The sentence ""Denies diarrhea, rash, or <symptom> joint pain </symptom>"" shows the symptom is not present and therefore not causing any intervention. Let's use this sentence as evidence.
+
+5.  **Format the output:** Create the JSON object with the identified symptom, the false values for steroid and immunotherapy hold, and the supporting sentence.<unused95>```json
+{
+  ""symptom"": ""joint pain"",
+  ""steroid_for_symptom"": false,
+  ""immunotherapy_hold_for_symptom"": false,
+  ""evidence"": ""Denies diarrhea, rash, or <symptom> joint pain </symptom>.""
+}
+```"
+10,R006,Diarrhea,"Melanoma patient on pembrolizumab reports no new symptoms. Denies <symptom> diarrhea </symptom>, rash, or joint pain. Physical exam normal.","<unused94>thought
+The user wants me to analyze a clinical note and determine if the marked symptom, diarrhea, led to steroid treatment or immunotherapy hold/delay.
+
+1.  **Identify the symptom:** The marked symptom is ""diarrhea"".
+2.  **Analyze the text for steroid use related to diarrhea:** The text says the patient ""Denies <symptom> diarrhea </symptom>"". This means the patient did *not* have diarrhea. Therefore, diarrhea did not cause steroid use.
+3.  **Analyze the text for immunotherapy hold/delay related to diarrhea:** The text says the patient ""Denies <symptom> diarrhea </symptom>"". This means the patient did *not* have diarrhea. Therefore, diarrhea did not cause an immunotherapy hold/delay.
+4.  **Format the output:** Create a JSON object with the symptom, boolean flags for steroid use and immunotherapy hold, and the supporting evidence. Since the patient denied the symptom, there's no evidence linking it to either action.
+
+```json
+{
+  ""symptom"": ""diarrhea"",
+  ""steroid_for_symptom"": false,
+  ""immunotherapy_hold_for_symptom"": false,
+  ""evidence"": ""Denies <symptom> diarrhea </symptom>""
+}
+```<unused95>```json
+{
+  ""symptom"": ""diarrhea"",
+  ""steroid_for_symptom"": false,
+  ""immunotherapy_hold_for_symptom"": false,
+  ""evidence"": ""Denies <symptom> diarrhea </symptom>""
+}
+```"
+11,R006,Rash,"Melanoma patient on pembrolizumab reports no new symptoms. Denies diarrhea, <symptom> Rash </symptom>, or joint pain. Physical exam normal.","<unused94>thought
+The user wants me to analyze a clinical note and determine if the marked symptom (<symptom>Rash</symptom>) led to steroid treatment or immunotherapy hold/delay.
+
+1.  **Identify the symptom:** The symptom is ""Rash"".
+2.  **Scan the text for steroid treatment:** The text mentions no new symptoms and a normal physical exam. There is no mention of steroid treatment.
+3.  **Scan the text for immunotherapy hold/delay:** The text mentions the patient is on pembrolizumab but there's no mention of holding or delaying it due to the rash. In fact, the patient *denies* having a rash.
+4.  **Determine causality:** Since the patient denies the rash and there's no mention of either steroids or immunotherapy hold/delay related to any symptom, the answer for both is false.
+5.  **Find supporting evidence:** The evidence is the denial of the symptom. ""Denies diarrhea, <symptom> Rash </symptom>, or joint pain.""
+
+**Construct JSON:**
+
+```json
+{
+  ""symptom"": ""Rash"",
+  ""steroid_for_symptom"": false,
+  ""immunotherapy_hold_for_symptom"": false,
+  ""evidence"": ""Denies diarrhea, Rash, or joint pain.""
+}
+```<unused95>```json
+{
+  ""symptom"": ""Rash"",
+  ""steroid_for_symptom"": false,
+  ""immunotherapy_hold_for_symptom"": false,
+  ""evidence"": ""Denies diarrhea, Rash, or joint pain.""
+}
+```"
+12,R007,Arthritis,Stage IV small cell lung cancer patient receiving nivolumab. Developed new poly<symptom> Arthritis </symptom> and morning stiffness over past 2 weeks. ESR elevated. Rheumatology consult planned.,"<unused94>thought
+The user wants me to analyze a clinical note and determine if the marked symptom, ""Arthritis"", led to steroid treatment or immunotherapy hold/delay.
+
+1.  **Identify the symptom:** The symptom is ""Arthritis"".
+2.  **Scan for steroid use:** The note doesn't mention steroid use.
+3.  **Scan for immunotherapy hold/delay:** The note doesn't mention holding or delaying nivolumab.
+4.  **Analyze the relationship:** The note describes the patient developing arthritis and morning stiffness, with an elevated ESR. A rheumatology consult is planned. There's no mention of treatment initiated *because* of the arthritis, nor any mention of altering the immunotherapy regimen due to the arthritis.
+5.  **Conclusion:** Neither steroid treatment nor immunotherapy hold/delay was initiated *because* of the arthritis based on this note.
+6.  **Format the output:** Create the JSON output with the symptom, false for both steroid and immunotherapy hold, and ""None"" for evidence.<unused95>```json
+{
+  ""symptom"": ""Arthritis"",
+  ""steroid_for_symptom"": false,
+  ""immunotherapy_hold_for_symptom"": false,
+  ""evidence"": ""None""
+}
+```"
+13,R007,Rheumatology,Stage IV small cell lung cancer patient receiving nivolumab. Developed new polyarthritis and morning stiffness over past 2 weeks. ESR elevated. <symptom> RHEUMATOLOGY </symptom> consult planned.,"<unused94>thought
+1.  **Identify the symptom:** The marked symptom is `<symptom> RHEUMATOLOGY </symptom>`.
+
+2.  **Analyze the text for steroid use related to the symptom:** The text mentions the patient has developed new polyarthritis and morning stiffness, leading to a rheumatology consult. There is no mention of steroid treatment *because* of the rheumatology consult or the underlying polyarthritis/stiffness.
+
+3.  **Analyze the text for immunotherapy hold/delay related to the symptom:** The text mentions the patient is receiving nivolumab (immunotherapy) and has developed polyarthritis/stiffness. A rheumatology consult is planned. There is no mention of holding or delaying the nivolumab *because* of the rheumatology consult or the underlying polyarthritis/stiffness.
+
+4.  **Determine `steroid_for_symptom`:** No steroids were mentioned as being given *because* of the rheumatology consult or the associated symptoms. Therefore, the answer is `false`.
+
+5.  **Determine `immunotherapy_hold_for_symptom`:** No immunotherapy hold or delay was mentioned as being done *because* of the rheumatology consult or the associated symptoms. Therefore, the answer is `false`.
+
+6.  **Identify supporting evidence:** The text states a rheumatology consult is planned but doesn't link it to any treatment changes (steroids or immunotherapy hold). Therefore, the evidence is ""None"".
+
+7.  **Format the output:** Create the JSON object with the identified symptom, the boolean results, and the evidence.<unused95>```json
+{
+  ""symptom"": ""RHEUMATOLOGY"",
+  ""steroid_for_symptom"": false,
+  ""immunotherapy_hold_for_symptom"": false,
+  ""evidence"": ""None""
+}
+```"
+14,R007,Stiffness,Stage IV small cell lung cancer patient receiving nivolumab. Developed new polyarthritis and morning <symptom> stiffness </symptom> over past 2 weeks. ESR elevated. Rheumatology consult planned.,"<unused94>thought
+The user wants me to act as a medical text reviewer.
+I need to identify if the marked symptom, `<symptom> stiffness </symptom>`, directly led to steroid treatment or immunotherapy hold/delay.
+
+1.  **Identify the symptom:** The marked symptom is ""stiffness"".
+2.  **Analyze the text for steroid use related to the symptom:** The text mentions the patient has Stage IV small cell lung cancer and is receiving nivolumab. They developed polyarthritis and morning stiffness. There is no mention of steroid treatment in this note.
+3.  **Analyze the text for immunotherapy hold/delay related to the symptom:** The text mentions the patient is receiving nivolumab. They developed polyarthritis and morning stiffness. There is no mention of holding or delaying nivolumab in this note.
+4.  **Determine the output:**
+    *   `symptom`: ""stiffness""
+    *   `steroid_for_symptom`: false (No steroids mentioned)
+    *   `immunotherapy_hold_for_symptom`: false (No hold/delay mentioned)
+    *   `evidence`: ""None"" (Neither action is mentioned in the text)
+
+```json
+{
+  ""symptom"": ""stiffness"",
+  ""steroid_for_symptom"": false,
+  ""immunotherapy_hold_for_symptom"": false,
+  ""evidence"": ""None""
+}
+```<unused95>```json
+{
+  ""symptom"": ""stiffness"",
+  ""steroid_for_symptom"": false,
+  ""immunotherapy_hold_for_symptom"": false,
+  ""evidence"": ""None""
+}
+```"
+15,R008,Adrenal Insufficiency,"Renal cell carcinoma on ipilimumab monotherapy. Presented with severe fatigue, dizziness, and hypotension. Morning cortisol low, ACTH low. Suspect secondary <symptom> Adrenal insufficiency </symptom> due to hypophysitis.","<unused94>thought
+The user wants me to act as a medical text reviewer.
+I need to analyze the provided text and determine if the marked symptom, ""Adrenal insufficiency"", directly led to steroid treatment or immunotherapy hold/delay.
+
+1.  **Identify the symptom:** The marked symptom is ""Adrenal insufficiency"".
+2.  **Analyze the text for steroid use related to the symptom:** The text mentions ""Morning cortisol low, ACTH low. Suspect secondary Adrenal insufficiency"". While adrenal insufficiency often requires steroid replacement, the text *doesn't explicitly state* that steroids were *given* or *initiated* *because* of the suspected adrenal insufficiency in this specific note. It only mentions the suspicion.
+3.  **Analyze the text for immunotherapy hold/delay related to the symptom:** The patient is on ipilimumab. Hypophysitis (mentioned as the likely cause of the adrenal insufficiency) is a known side effect of ipilimumab that can necessitate holding or delaying treatment. However, the text *doesn't explicitly state* that the immunotherapy was held or delayed *because* of the adrenal insufficiency or hypophysitis. It only mentions the suspicion and the patient's current treatment.
+4.  **Conclusion:** The text doesn't explicitly state that steroids were given or immunotherapy was held/delayed *because* of the adrenal insufficiency. Therefore, both answers should be false.
+
+**Output Construction:**
+
+*   `symptom`: ""Adrenal insufficiency""
+*   `steroid_for_symptom`: false (No explicit mention of steroid initiation *due to* the symptom in this note)
+*   `immunotherapy_hold_for_symptom`: false (No explicit mention of immunotherapy hold/delay *due to* the symptom in this note)
+*   `evidence`: ""None"" (Since neither action was explicitly stated as being *because* of the symptom)<unused95>```json
+{
+  ""symptom"": ""Adrenal insufficiency"",
+  ""steroid_for_symptom"": false,
+  ""immunotherapy_hold_for_symptom"": false,
+  ""evidence"": ""None""
+}
+```"
+16,R008,Dizziness,"Renal cell carcinoma on ipilimumab monotherapy. Presented with severe fatigue, <symptom> Dizziness </symptom>, and hypotension. Morning cortisol low, ACTH low. Suspect secondary adrenal insufficiency due to hypophysitis.","<unused94>thought
+The user wants me to act as a medical text reviewer.
+I need to identify if the marked symptom, ""Dizziness"", directly led to steroid treatment or immunotherapy hold/delay.
+
+1.  **Identify the symptom:** The marked symptom is ""Dizziness"".
+2.  **Analyze the text for steroid use related to the symptom:** The text mentions the patient has low cortisol and low ACTH, suspecting secondary adrenal insufficiency due to hypophysitis. Adrenal insufficiency is often treated with steroids. However, the text doesn't explicitly state that steroids were *given* for the dizziness, or even for the suspected adrenal insufficiency. It mentions the suspicion and lab results, but not the treatment.
+3.  **Analyze the text for immunotherapy hold/delay related to the symptom:** The patient is on ipilimumab. The text mentions severe fatigue, dizziness, and hypotension, leading to suspicion of adrenal insufficiency. Adrenal insufficiency is a known side effect of ipilimumab and often requires holding the immunotherapy. However, the text doesn't explicitly state that the immunotherapy was held *because of* the dizziness. It mentions the symptoms leading to the suspicion of adrenal insufficiency, which *would* typically cause a hold, but the hold itself isn't explicitly stated in the provided text.
+4.  **Conclusion:** The text does not explicitly state that steroids were administered *because of* dizziness, nor does it explicitly state that immunotherapy was held *because of* dizziness. While the symptoms (including dizziness) led to a diagnosis that *would* typically cause a hold and potentially steroid treatment, the text itself doesn't confirm these actions were taken *due to the dizziness*.
+
+Therefore:
+-   steroid_for_symptom: false
+-   immunotherapy_hold_for_symptom: false
+-   evidence: None (as the text doesn't explicitly link the actions to the symptom)<unused95>```json
+{
+  ""symptom"": ""Dizziness"",
+  ""steroid_for_symptom"": false,
+  ""immunotherapy_hold_for_symptom"": false,
+  ""evidence"": ""None""
+}
+```"
+17,R008,Fatigue,"Renal cell carcinoma on ipilimumab monotherapy. Presented with severe <symptom> Fatigue </symptom>, dizziness, and hypotension. Morning cortisol low, ACTH low. Suspect secondary adrenal insufficiency due to hypophysitis.","<unused94>thought
+The user wants me to act as a medical text reviewer.
+I need to identify if the marked symptom, ""Fatigue"", directly led to either steroid treatment or immunotherapy hold/delay based on the provided text.
+
+1.  **Identify the marked symptom:** The symptom is ""Fatigue"".
+2.  **Analyze the text for steroid use related to the symptom:** The text mentions ""severe Fatigue"" and suspects secondary adrenal insufficiency. While adrenal insufficiency is often treated with steroids, the text doesn't explicitly state steroids were *given* for the fatigue or adrenal insufficiency. It mentions the patient's presentation and suspicion, but not the treatment initiated *because* of this specific presentation.
+3.  **Analyze the text for immunotherapy hold/delay related to the symptom:** The text mentions the patient is on ipilimumab and suspects secondary adrenal insufficiency (a known side effect potentially requiring treatment or management changes). However, it doesn't explicitly state that the ipilimumab was held or delayed *because* of the fatigue or the suspected adrenal insufficiency.
+4.  **Determine the outputs:**
+    *   `symptom`: ""Fatigue""
+    *   `steroid_for_symptom`: false (No explicit mention of steroids being given *for* the fatigue/adrenal insufficiency in this note).
+    *   `immunotherapy_hold_for_symptom`: false (No explicit mention of holding ipilimumab *because* of the fatigue/adrenal insufficiency).
+    *   `evidence`: ""None"" (No sentence explicitly links the fatigue or resulting suspicion to either steroid administration or immunotherapy hold in this specific note).
+
+```json
+{
+  ""symptom"": ""Fatigue"",
+  ""steroid_for_symptom"": false,
+  ""immunotherapy_hold_for_symptom"": false,
+  ""evidence"": ""None""
+}
+```<unused95>```json
+{
+  ""symptom"": ""Fatigue"",
+  ""steroid_for_symptom"": false,
+  ""immunotherapy_hold_for_symptom"": false,
+  ""evidence"": ""None""
+}
+```"
+18,R009,Erythema,"Metastatic melanoma on atezolizumab. Mild <symptom> erythema </symptom>tous rash on upper chest, responding to topical steroids. No GI or respiratory symptoms.","<unused94>thought
+The user wants me to act as a medical text reviewer.
+I need to identify if the marked symptom, ""erythema tous rash"", directly led to steroid treatment or immunotherapy hold/delay based on the provided text.
+
+1.  **Identify the symptom:** The marked symptom is ""erythema tous rash"".
+2.  **Analyze the text for steroid use related to the symptom:** The text says ""Mild erythema tous rash on upper chest, responding to topical steroids."" This indicates that topical steroids were used to treat the rash.
+3.  **Analyze the text for immunotherapy hold/delay related to the symptom:** The text mentions the patient is on atezolizumab (immunotherapy), but there is no mention of holding or delaying it due to the rash.
+4.  **Determine the output:**
+    *   Steroid use: Yes, topical steroids were used for the rash.
+    *   Immunotherapy hold/delay: No, there is no mention of holding or delaying immunotherapy due to the rash.
+5.  **Extract evidence:** The sentence ""Mild erythema tous rash on upper chest, responding to topical steroids."" supports the steroid use.
+
+```json
+{
+  ""symptom"": ""erythema tous rash"",
+  ""steroid_for_symptom"": true,
+  ""immunotherapy_hold_for_symptom"": false,
+  ""evidence"": ""Mild erythema tous rash on upper chest, responding to topical steroids.""
+}
+```<unused95>```json
+{
+  ""symptom"": ""erythema tous rash"",
+  ""steroid_for_symptom"": true,
+  ""immunotherapy_hold_for_symptom"": false,
+  ""evidence"": ""Mild erythema tous rash on upper chest, responding to topical steroids.""
+}
+```"
+19,R009,Rash,"Metastatic melanoma on atezolizumab. Mild erythematous <symptom> Rash </symptom> on upper chest, responding to topical steroids. No GI or respiratory symptoms.","<unused94>thought
+The user wants me to analyze a clinical note and determine if the marked symptom, 'Rash', directly led to steroid treatment or immunotherapy hold/delay.
+
+1.  **Identify the symptom:** The marked symptom is 'Rash'.
+2.  **Check for steroid treatment:** The text says ""Mild erythematous Rash on upper chest, responding to topical steroids."" This indicates steroids were used *for* the rash.
+3.  **Check for immunotherapy hold/delay:** The text mentions the patient is on atezolizumab (immunotherapy) but doesn't state any hold or delay related to the rash.
+4.  **Format the output:** Create a JSON object with the symptom, boolean values for steroid and immunotherapy hold, and the supporting evidence.
+
+*   **symptom**: ""Rash""
+*   **steroid_for_symptom**: True (The rash was treated with topical steroids).
+*   **immunotherapy_hold_for_symptom**: False (No mention of immunotherapy hold/delay due to the rash).
+*   **evidence**: ""Mild erythematous Rash on upper chest, responding to topical steroids.""<unused95>```json
+{
+  ""symptom"": ""Rash"",
+  ""steroid_for_symptom"": true,
+  ""immunotherapy_hold_for_symptom"": false,
+  ""evidence"": ""Mild erythematous Rash on upper chest, responding to topical steroids.""
+}
+```"

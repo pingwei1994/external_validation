@@ -1,0 +1,712 @@
+,report_id,standard_drug,standard_symptom,symptom_adjacent,output
+0,R001,nivolumab,Diarrhea,"Patient with metastatic melanoma currently receiving nivolumab every 2 weeks. No new symptoms reported. Physical exam unremarkable. No evidence of rash, <symptom> diarrhea </symptom>, or fatigue.","<unused94>thought
+The user wants me to classify the relationship between the symptom 'diarrhea' and the drug 'nivolumab' based on the provided clinical note.
+
+1.  **Identify the symptom and input drug:**
+    *   Symptom: diarrhea
+    *   Input Drug: nivolumab
+
+2.  **Analyze the text for attribution:**
+    *   The note states: ""No evidence of rash, <symptom> diarrhea </symptom>, or fatigue.""
+    *   This sentence indicates the *absence* of diarrhea. It does not link the presence or absence of diarrhea to nivolumab or any other cause.
+
+3.  **Apply the classification rules:**
+    *   **highly_suspect_drug_related**: The note does *not* link diarrhea to nivolumab. It states there is *no* evidence of diarrhea.
+    *   **highly_suspect_other_drug_or_etiology**: The note does *not* attribute diarrhea to another drug or a specific non-drug cause.
+    *   **other**: Since neither of the above criteria is met, and there's no explicit link (causal or otherwise) between the symptom and the drug, this is the correct classification.
+
+4.  **Construct the JSON output:**
+    *   `symptom`: ""diarrhea""
+    *   `input_drug`: ""nivolumab""
+    *   `etiology_classification`: ""other""
+    *   `supporting_evidence`: ""No evidence of rash, diarrhea, or fatigue.""
+    *   `reasoning`: ""The note explicitly states there is 'No evidence of' the symptom (diarrhea), not linking it to the drug or any other cause.""<unused95>```json
+{
+  ""symptom"": ""diarrhea"",
+  ""input_drug"": ""nivolumab"",
+  ""etiology_classification"": ""other"",
+  ""supporting_evidence"": ""No evidence of rash, diarrhea, or fatigue."",
+  ""reasoning"": ""The note explicitly states there is 'No evidence of' the symptom (diarrhea), indicating its absence rather than attributing it to the drug or any other cause.""
+}
+```"
+1,R001,nivolumab,Fatigue,"Patient with metastatic melanoma currently receiving nivolumab every 2 weeks. No new symptoms reported. Physical exam unremarkable. No evidence of rash, diarrhea, or <symptom> Fatigue </symptom>.","<unused94>thought
+The user wants me to classify the relationship between the symptom 'Fatigue' and the drug 'nivolumab' based on the provided clinical note.
+
+1.  **Identify the symptom and input drug:**
+    *   Symptom: Fatigue
+    *   Input Drug: nivolumab
+
+2.  **Analyze the clinical note for attribution:**
+    *   The note states: ""Patient with metastatic melanoma currently receiving nivolumab every 2 weeks. No new symptoms reported. Physical exam unremarkable. No evidence of rash, diarrhea, or <symptom> Fatigue </symptom>.""
+    *   The note explicitly states ""No evidence of... Fatigue"". This means the patient does *not* have fatigue.
+
+3.  **Apply Classification Rules:**
+    *   **Rule 1 (highly_suspect_drug_related):** The note does *not* link fatigue to nivolumab. In fact, it states there is no fatigue. So, this rule does not apply.
+    *   **Rule 2 (highly_suspect_other_drug_or_etiology):** The note does not attribute fatigue to another drug or a confirmed non-drug cause. So, this rule does not apply.
+    *   **Rule 3 (other):** The note explicitly states the absence of the symptom. This doesn't fit the criteria for either of the first two categories. The symptom is mentioned, but its *absence* is noted, not its presence or cause. The lack of a stated cause or link means it falls into the 'other' category.
+
+4.  **Construct the JSON output:**
+    *   `symptom`: ""Fatigue""
+    *   `input_drug`: ""nivolumab""
+    *   `etiology_classification`: ""other""
+    *   `supporting_evidence`: ""No evidence of rash, diarrhea, or <symptom> Fatigue </symptom>.""
+    *   `reasoning`: ""The note explicitly states 'No evidence of Fatigue'. There is no mention of fatigue being caused by nivolumab or any other factor. Therefore, it cannot be classified as drug-related or due to another etiology.""<unused95>```json
+{
+  ""symptom"": ""Fatigue"",
+  ""input_drug"": ""nivolumab"",
+  ""etiology_classification"": ""other"",
+  ""supporting_evidence"": ""No evidence of rash, diarrhea, or <symptom> Fatigue </symptom>."",
+  ""reasoning"": ""The note explicitly states the absence of the symptom ('No evidence of Fatigue'). There is no mention of fatigue being caused by nivolumab or any other factor, thus it doesn't fit the criteria for 'highly_suspect_drug_related' or 'highly_suspect_other_drug_or_etiology'.""
+}
+```"
+2,R001,nivolumab,Rash,"Patient with metastatic melanoma currently receiving nivolumab every 2 weeks. No new symptoms reported. Physical exam unremarkable. No evidence of <symptom> Rash </symptom>, diarrhea, or fatigue.","<unused94>thought
+The user wants me to classify the relationship between the symptom ""Rash"" and the drug ""nivolumab"" based on the provided clinical note.
+
+1.  **Analyze the text:** The note states: ""No evidence of <symptom> Rash </symptom>, diarrhea, or fatigue.""
+2.  **Attribution to Input Drug (nivolumab)?** The note explicitly states there is *no evidence* of Rash. It does not link the absence of Rash to nivolumab or any other cause.
+3.  **Attribution to Another Drug or Etiology?** No other drugs or specific etiologies are mentioned as causing or not causing the Rash.
+4.  **Certainty Check:** The note is definitive in stating there is no Rash, but it doesn't attribute the *absence* of Rash to any specific cause or drug.
+5.  **Classification:** Since there's no explicit link (causal or otherwise) between the symptom (or lack thereof) and the input drug, and no clear attribution to another cause, the appropriate classification is ""other"".
+
+**JSON Output Construction:**
+
+*   **symptom**: ""Rash""
+*   **input_drug**: ""nivolumab""
+*   **etiology_classification**: ""other""
+*   **supporting_evidence**: ""No evidence of <symptom> Rash </symptom>, diarrhea, or fatigue.""
+*   **reasoning**: The note explicitly states there is no evidence of the symptom (Rash). It does not attribute the absence of the symptom to the input drug (nivolumab) or any other cause. Therefore, based on the strict criteria, it cannot be classified as drug-related or related to another etiology.<unused95>```json
+{
+  ""symptom"": ""Rash"",
+  ""input_drug"": ""nivolumab"",
+  ""etiology_classification"": ""other"",
+  ""supporting_evidence"": ""No evidence of <symptom> Rash </symptom>, diarrhea, or fatigue."",
+  ""reasoning"": ""The note explicitly states there is no evidence of the symptom (Rash). It does not attribute the absence of the symptom to the input drug or any other cause.""
+}
+```"
+3,R002,pembrolizumab,Colitis,"The patient has stage IV non-small cell lung cancer on pembrolizumab monotherapy. Over the past week, developed mild diarrhea and fatigue. Consider immune-mediated <symptom> colitis </symptom>; stool studies pending.","<unused94>thought
+The user wants me to classify the relationship between the symptom `<symptom>colitis</symptom>` and the `Input Drug: pembrolizumab` based on the provided clinical note.
+
+1.  **Identify the symptom:** colitis
+2.  **Identify the input drug:** pembrolizumab
+3.  **Analyze the text for links:** The note mentions ""Consider immune-mediated colitis"". This suggests colitis as a potential consequence of the treatment (pembrolizumab), which is known to cause immune-mediated adverse events. However, the phrasing ""Consider immune-mediated colitis"" indicates a *possibility* or *suspicion*, not a confirmed fact linking the colitis directly to pembrolizumab *in this specific note*. It doesn't state that the colitis *is* caused by pembrolizumab, only that it is being considered as such.
+
+4.  **Apply Classification Rules:**
+    *   **highly_suspect_drug_related:** Requires explicit linking or causality. The note uses ""Consider"", which indicates a possibility, not a confirmed link. This rule is not met.
+    *   **highly_suspect_other_drug_or_etiology:** The symptom is not attributed to another drug or a confirmed non-drug cause. This rule is not met.
+    *   **other:** This category covers unconfirmed or speculative causes. The phrase ""Consider immune-mediated colitis"" fits this description as it's a potential diagnosis being considered, not a confirmed etiology.
+
+5.  **Formulate JSON:**
+    *   `symptom`: ""colitis""
+    *   `input_drug`: ""pembrolizumab""
+    *   `etiology_classification`: ""other""
+    *   `supporting_evidence`: ""Consider immune-mediated colitis""
+    *   `reasoning`: ""The note suggests colitis as a possibility ('Consider') related to the immune-mediated effects of pembrolizumab, but it is not definitively attributed to the drug within this text. Therefore, it falls under the 'other' category for speculative causes.""<unused95>```json
+{
+  ""symptom"": ""colitis"",
+  ""input_drug"": ""pembrolizumab"",
+  ""etiology_classification"": ""other"",
+  ""supporting_evidence"": ""Consider immune-mediated colitis"",
+  ""reasoning"": ""The note suggests colitis as a potential diagnosis ('Consider') possibly related to the immune effects of pembrolizumab, but it does not definitively attribute the colitis to the drug. It remains a possibility or differential diagnosis within the text.""
+}
+```"
+4,R002,pembrolizumab,Diarrhea,"The patient has stage IV non-small cell lung cancer on pembrolizumab monotherapy. Over the past week, developed mild <symptom> diarrhea </symptom> and fatigue. Consider immune-mediated colitis; stool studies pending.","<unused94>thought
+The user wants me to classify the relationship between the symptom 'diarrhea' and the drug 'pembrolizumab' based on the provided clinical note.
+
+1.  **Identify the symptom and input drug:**
+    *   Symptom: diarrhea
+    *   Input Drug: pembrolizumab
+
+2.  **Analyze the text for attribution:**
+    *   The note says: ""Over the past week, developed mild diarrhea and fatigue."" This sentence links the diarrhea to the patient's recent history.
+    *   The next sentence says: ""Consider immune-mediated colitis; stool studies pending."" This suggests a potential cause for the diarrhea (immune-mediated colitis), which is a known side effect of pembrolizumab, but it's presented as a consideration, not a confirmed fact linking the diarrhea directly to the drug in this note.
+    *   There is no explicit statement linking the diarrhea *directly* to pembrolizumab (e.g., ""diarrhea due to pembrolizumab,"" ""pembrolizumab induced diarrhea"").
+    *   There is no mention of other drugs or confirmed non-drug causes for the diarrhea.
+
+3.  **Apply Classification Rules:**
+    *   **Rule 1 (highly_suspect_drug_related):** The note does not explicitly link the diarrhea to pembrolizumab. While immune-mediated colitis (a potential cause) is related to the drug, the note only says ""Consider immune-mediated colitis,"" which is not a confirmed link. Therefore, this rule is not met.
+    *   **Rule 2 (highly_suspect_other_drug_or_etiology):** The note doesn't attribute the diarrhea to another drug or a confirmed non-drug cause. The mention of ""immune-mediated colitis"" is a consideration, not a confirmed etiology within this note. Therefore, this rule is not met.
+    *   **Rule 3 (other):** Since the diarrhea is mentioned but its cause isn't definitively linked to the input drug or another confirmed cause within the note, this category applies.
+
+4.  **Construct JSON Output:**
+    *   `symptom`: ""diarrhea""
+    *   `input_drug`: ""pembrolizumab""
+    *   `etiology_classification`: ""other""
+    *   `supporting_evidence`: ""Over the past week, developed mild diarrhea and fatigue. Consider immune-mediated colitis; stool studies pending.""
+    *   `reasoning`: ""The note mentions the occurrence of diarrhea but does not explicitly attribute it to pembrolizumab. While immune-mediated colitis is considered as a potential cause, it is not stated as a confirmed etiology in this note. There is no definitive link to the input drug or another confirmed cause.""<unused95>```json
+{
+  ""symptom"": ""diarrhea"",
+  ""input_drug"": ""pembrolizumab"",
+  ""etiology_classification"": ""other"",
+  ""supporting_evidence"": ""Over the past week, developed mild diarrhea and fatigue. Consider immune-mediated colitis; stool studies pending."",
+  ""reasoning"": ""The note mentions the occurrence of diarrhea but does not explicitly attribute it to pembrolizumab. While immune-mediated colitis is considered as a potential cause, it is not stated as a confirmed etiology in this note. There is no definitive link to the input drug or another confirmed cause.""
+}
+```"
+5,R002,pembrolizumab,Fatigue,"The patient has stage IV non-small cell lung cancer on pembrolizumab monotherapy. Over the past week, developed mild diarrhea and <symptom> Fatigue </symptom>. Consider immune-mediated colitis; stool studies pending.","<unused94>thought
+The user wants me to classify the relationship between the symptom ""Fatigue"" and the drug ""pembrolizumab"" based on the provided clinical note.
+
+1.  **Identify the symptom and input drug:**
+    *   Symptom: Fatigue
+    *   Input Drug: pembrolizumab
+
+2.  **Analyze the text for links between the symptom and the input drug:**
+    *   The note mentions the patient is on pembrolizumab monotherapy.
+    *   It states the patient developed ""mild diarrhea and Fatigue"" over the past week.
+    *   It suggests considering immune-mediated colitis as a potential cause for the diarrhea.
+    *   There is no explicit link stated between the fatigue and the pembrolizumab. The fatigue is listed alongside diarrhea, and the potential cause mentioned (immune-mediated colitis) is specifically linked to the diarrhea, not the fatigue.
+
+3.  **Evaluate against classification rules:**
+    *   **highly_suspect_drug_related:** The note does *not* explicitly link fatigue to pembrolizumab. It doesn't say fatigue is ""due to,"" ""induced by,"" or ""secondary to"" pembrolizumab. It doesn't mention holding/discontinuing the drug because of fatigue.
+    *   **highly_suspect_other_drug_or_etiology:** The note doesn't attribute the fatigue to another drug or a specific confirmed non-drug cause. Immune-mediated colitis is mentioned as a *consideration* for the diarrhea, not definitively fatigue.
+    *   **other:** Since there's no explicit link to pembrolizumab, and no clear attribution to another specific cause, this category seems appropriate. The fatigue is mentioned as a symptom the patient developed while on the drug, but the note doesn't establish a causal relationship.
+
+4.  **Determine the classification:** Based on the lack of explicit causal link in the note, the classification should be `other`.
+
+5.  **Extract supporting evidence:** The relevant sentence is ""Over the past week, developed mild diarrhea and <symptom> Fatigue </symptom>.""
+
+6.  **Formulate reasoning:** The note lists fatigue as a symptom developed by the patient while on pembrolizumab, but it does not explicitly attribute the fatigue to the drug or any other specific cause.
+
+7.  **Construct JSON output:**
+
+```json
+{
+  ""symptom"": ""Fatigue"",
+  ""input_drug"": ""pembrolizumab"",
+  ""etiology_classification"": ""other"",
+  ""supporting_evidence"": ""Over the past week, developed mild diarrhea and Fatigue."",
+  ""reasoning"": ""The clinical note mentions fatigue as a symptom the patient developed while on pembrolizumab, but it does not explicitly attribute the fatigue to the drug or any other specific cause.""
+}
+```<unused95>```json
+{
+  ""symptom"": ""Fatigue"",
+  ""input_drug"": ""pembrolizumab"",
+  ""etiology_classification"": ""other"",
+  ""supporting_evidence"": ""Over the past week, developed mild diarrhea and <symptom> Fatigue </symptom>."",
+  ""reasoning"": ""The clinical note mentions fatigue as a symptom the patient developed while on pembrolizumab, but it does not explicitly attribute the fatigue to the drug or any other specific cause. Immune-mediated colitis is mentioned as a consideration for the diarrhea, not the fatigue.""
+}
+```"
+6,R003,ipilimumab,Pruritus,"History of renal cell carcinoma on combination nivolumab and ipilimumab. Reports <symptom> prurit </symptom>ic rash over trunk and extremities, started 5 days ago. No shortness of breath.","<unused94>thought
+The user wants me to classify the relationship between the symptom 'pruritic rash' and the drug 'ipilimumab' based on the provided clinical note.
+
+1.  **Identify the symptom and input drug:**
+    *   Symptom: pruritic rash
+    *   Input Drug: ipilimumab
+
+2.  **Analyze the clinical note for attribution:**
+    *   The note states: ""Reports <symptom> pruritic rash </symptom> over trunk and extremities, started 5 days ago.""
+    *   The patient is on combination nivolumab and ipilimumab.
+    *   The note doesn't explicitly link the rash to either drug or any other specific cause. It just reports the symptom.
+
+3.  **Apply classification rules:**
+    *   **Rule 1 (highly_suspect_drug_related):** Is the rash explicitly linked to ipilimumab? No. There's no phrase like ""due to,"" ""induced by,"" or mention of holding/discontinuing the drug because of the rash.
+    *   **Rule 2 (highly_suspect_other_drug_or_etiology):** Is the rash clearly linked to a different medication or a confirmed non-drug cause? No.
+    *   **Rule 3 (other):** Since neither Rule 1 nor Rule 2 applies, the classification defaults to 'other'. The note simply reports the symptom without attributing a cause.
+
+4.  **Construct the JSON output:**
+    *   `symptom`: ""pruritic rash""
+    *   `input_drug`: ""ipilimumab""
+    *   `etiology_classification`: ""other""
+    *   `supporting_evidence`: ""Reports <symptom> pruritic rash </symptom> over trunk and extremities, started 5 days ago.""
+    *   `reasoning`: ""The clinical note reports the symptom without explicitly attributing it to the input drug (ipilimumab) or any other specific cause. Therefore, based on the provided text, the etiology cannot be confirmed as drug-related or due to another specific cause.""<unused95>```json
+{
+  ""symptom"": ""pruritic rash"",
+  ""input_drug"": ""ipilimumab"",
+  ""etiology_classification"": ""other"",
+  ""supporting_evidence"": ""Reports <symptom> pruritic rash </symptom> over trunk and extremities, started 5 days ago."",
+  ""reasoning"": ""The clinical note reports the symptom without explicitly attributing it to the input drug (ipilimumab) or any other specific cause. Therefore, based on the provided text, the etiology cannot be confirmed as drug-related or due to another specific cause.""
+}
+```"
+7,R003,ipilimumab,Rash,"History of renal cell carcinoma on combination nivolumab and ipilimumab. Reports pruritic <symptom> Rash </symptom> over trunk and extremities, started 5 days ago. No shortness of breath.","<unused94>thought
+The user wants me to classify the relationship between the symptom 'Rash' and the drug 'ipilimumab' based on the provided clinical note.
+
+1.  **Target**: The symptom is 'Rash' and the input drug is 'ipilimumab'.
+2.  **Attribution to Input Drug**: The note mentions the patient is on 'nivolumab and ipilimumab'. It then states the patient reports a 'pruritic Rash' that started 5 days ago. The note doesn't explicitly link the rash to either drug, but given the recent onset of the rash while the patient is on these medications, it's a potential drug reaction. However, the note doesn't use causal language like ""due to,"" ""induced by,"" or ""secondary to."" It's a temporal association.
+3.  **Attribution to Another Drug or Confirmed Etiology**: No other drug or confirmed non-drug cause is mentioned as the cause of the rash.
+4.  **Certainty Check**: The cause is not stated as a confirmed fact. It's a symptom reported by the patient while on the medication. There's a temporal association, but no explicit causal link.
+5.  **Classification**: Since there is no explicit link or confirmed cause, and it's not clearly attributed to another drug or etiology, the most appropriate classification is 'other'.
+
+**JSON Structure:**
+
+*   `symptom`: ""Rash""
+*   `input_drug`: ""ipilimumab""
+*   `etiology_classification`: ""other""
+*   `supporting_evidence`: ""Reports pruritic <symptom> Rash </symptom> over trunk and extremities, started 5 days ago.""
+*   `reasoning`: ""The note reports the rash while the patient is on ipilimumab (and nivolumab), but does not explicitly state a causal link to either drug. It is a reported symptom without a confirmed etiology mentioned in the text.""<unused95>```json
+{
+  ""symptom"": ""Rash"",
+  ""input_drug"": ""ipilimumab"",
+  ""etiology_classification"": ""other"",
+  ""supporting_evidence"": ""Reports pruritic <symptom> Rash </symptom> over trunk and extremities, started 5 days ago."",
+  ""reasoning"": ""The note reports the rash while the patient is on ipilimumab (and nivolumab), but does not explicitly state a causal link to either drug. It is a reported symptom without a confirmed etiology mentioned in the text.""
+}
+```"
+8,R003,ipilimumab,Shortness of Breath,"History of renal cell carcinoma on combination nivolumab and ipilimumab. Reports pruritic rash over trunk and extremities, started 5 days ago. No <symptom> shortness of breath </symptom>.","<unused94>thought
+The user wants me to classify the relationship between the symptom ""shortness of breath"" and the input drug ""ipilimumab"" based on the provided clinical note.
+
+1.  **Identify Symptom and Input Drug:**
+    *   Symptom: shortness of breath
+    *   Input Drug: ipilimumab
+
+2.  **Analyze the Note for Attribution:**
+    *   The note mentions the patient is on nivolumab and ipilimumab.
+    *   It describes a pruritic rash.
+    *   It explicitly states ""No shortness of breath"".
+    *   There is no mention linking shortness of breath to either ipilimumab or nivolumab. The note only states its absence.
+
+3.  **Apply Classification Rules:**
+    *   **Rule 1 (highly_suspect_drug_related):** The note does *not* link shortness of breath to ipilimumab. So, this is not applicable.
+    *   **Rule 2 (highly_suspect_other_drug_or_etiology):** The note does *not* attribute shortness of breath to another drug or a confirmed non-drug cause. So, this is not applicable.
+    *   **Rule 3 (other):** Since neither Rule 1 nor Rule 2 applies, this is the correct classification. The note simply states the *absence* of the symptom, providing no causal information.
+
+4.  **Construct JSON Output:**
+    *   `symptom`: ""shortness of breath""
+    *   `input_drug`: ""ipilimumab""
+    *   `etiology_classification`: ""other""
+    *   `supporting_evidence`: ""No shortness of breath""
+    *   `reasoning`: ""The note explicitly states the absence of shortness of breath ('No shortness of breath') and does not attribute the symptom to ipilimumab or any other cause.""<unused95>```json
+{
+  ""symptom"": ""shortness of breath"",
+  ""input_drug"": ""ipilimumab"",
+  ""etiology_classification"": ""other"",
+  ""supporting_evidence"": ""No shortness of breath"",
+  ""reasoning"": ""The note explicitly states the absence of shortness of breath ('No shortness of breath') and does not attribute the symptom to ipilimumab or any other cause.""
+}
+```"
+9,R003,nivolumab,Pruritus,"History of renal cell carcinoma on combination nivolumab and ipilimumab. Reports <symptom> prurit </symptom>ic rash over trunk and extremities, started 5 days ago. No shortness of breath.","<unused94>thought
+The user wants me to classify the relationship between the symptom 'pruritic rash' and the input drug 'nivolumab' based on the provided clinical note.
+
+1.  **Identify Symptom and Input Drug:**
+    *   Symptom: pruritic rash
+    *   Input Drug: nivolumab
+
+2.  **Analyze the Note for Attribution:**
+    *   The note states: ""Reports <symptom> pruritic rash</symptom> over trunk and extremities, started 5 days ago.""
+    *   The patient is on ""combination nivolumab and ipilimumab"".
+    *   The rash started 5 days ago. The patient is on nivolumab.
+    *   The note does *not* explicitly state that the nivolumab *caused* the rash. It just reports the symptom.
+    *   There is no mention of other drugs causing the rash.
+    *   There is no mention of a non-drug cause for the rash.
+    *   The relationship is temporal (patient is on the drug and developed the symptom), but there's no explicit causal link mentioned in the note.
+
+3.  **Apply Classification Rules:**
+    *   **Rule 1 (highly_suspect_drug_related):** The note does *not* explicitly link the rash to nivolumab (no ""due to,"" ""induced by,"" ""secondary to,"" or shorthand like ""tolerated except for""). Therefore, this category is not met.
+    *   **Rule 2 (highly_suspect_other_drug_or_etiology):** The note does *not* attribute the rash to another drug or a confirmed non-drug cause. Therefore, this category is not met.
+    *   **Rule 3 (other):** Since neither Rule 1 nor Rule 2 is met, the classification falls into the 'other' category. The note simply reports the symptom without attributing a cause.
+
+4.  **Construct JSON Output:**
+    *   `symptom`: ""pruritic rash""
+    *   `input_drug`: ""nivolumab""
+    *   `etiology_classification`: ""other""
+    *   `supporting_evidence`: ""Reports <symptom> pruritic rash</symptom> over trunk and extremities, started 5 days ago.""
+    *   `reasoning`: ""The clinical note reports the presence of a pruritic rash but does not explicitly link it to nivolumab or any other specific cause. There is no causal language or definitive attribution.""<unused95>```json
+{
+  ""symptom"": ""pruritic rash"",
+  ""input_drug"": ""nivolumab"",
+  ""etiology_classification"": ""other"",
+  ""supporting_evidence"": ""Reports <symptom> pruritic rash</symptom> over trunk and extremities, started 5 days ago."",
+  ""reasoning"": ""The clinical note reports the presence of a pruritic rash but does not explicitly link it to nivolumab or any other specific cause. There is no causal language or definitive attribution.""
+}
+```"
+10,R003,nivolumab,Rash,"History of renal cell carcinoma on combination nivolumab and ipilimumab. Reports pruritic <symptom> Rash </symptom> over trunk and extremities, started 5 days ago. No shortness of breath.","<unused94>thought
+The user wants me to classify the relationship between the symptom 'Rash' and the drug 'nivolumab' based on the provided clinical note.
+
+1.  **Identify the symptom and input drug:**
+    *   Symptom: Rash
+    *   Input Drug: nivolumab
+
+2.  **Analyze the text for links:**
+    *   The note mentions ""pruritic Rash over trunk and extremities, started 5 days ago.""
+    *   The patient is on ""combination nivolumab and ipilimumab.""
+    *   There is no explicit statement linking the rash *specifically* to nivolumab (or ipilimumab). It just lists the rash as a symptom the patient is reporting.
+    *   There's no mention of other drugs or non-drug causes for the rash.
+    *   There's no explicit causal language like ""due to,"" ""induced by,"" or ""secondary to"" connecting the rash to nivolumab.
+    *   There's no mention of holding or discontinuing nivolumab because of the rash.
+
+3.  **Apply classification rules:**
+    *   **Rule 1 (highly_suspect_drug_related):** The note does *not* explicitly link the rash to nivolumab. Therefore, this rule is not met.
+    *   **Rule 2 (highly_suspect_other_drug_or_etiology):** The note does *not* mention any other drug or confirmed non-drug cause for the rash. Therefore, this rule is not met.
+    *   **Rule 3 (other):** Since neither Rule 1 nor Rule 2 is met, the classification falls into the 'other' category. The symptom is listed, but its cause is not explicitly attributed to the input drug or any other confirmed cause within the note.
+
+4.  **Construct the JSON output:**
+    *   `symptom`: ""Rash""
+    *   `input_drug`: ""nivolumab""
+    *   `etiology_classification`: ""other""
+    *   `supporting_evidence`: ""Reports pruritic Rash over trunk and extremities, started 5 days ago."" (This is the sentence describing the symptom).
+    *   `reasoning`: ""The clinical note mentions the patient has a rash, but does not explicitly state a causal link between the rash and nivolumab. No other drug or confirmed etiology is mentioned as the cause.""<unused95>```json
+{
+  ""symptom"": ""Rash"",
+  ""input_drug"": ""nivolumab"",
+  ""etiology_classification"": ""other"",
+  ""supporting_evidence"": ""Reports pruritic Rash over trunk and extremities, started 5 days ago."",
+  ""reasoning"": ""The clinical note mentions the patient has a rash, but does not explicitly state a causal link between the rash and nivolumab. No other drug or confirmed etiology is mentioned as the cause.""
+}
+```"
+11,R003,nivolumab,Shortness of Breath,"History of renal cell carcinoma on combination nivolumab and ipilimumab. Reports pruritic rash over trunk and extremities, started 5 days ago. No <symptom> shortness of breath </symptom>.","<unused94>thought
+The user wants me to classify the relationship between the symptom ""shortness of breath"" and the input drug ""nivolumab"" based on the provided clinical note.
+
+1.  **Target**: The symptom is ""shortness of breath"". The input drug is ""nivolumab"".
+2.  **Attribution to Input Drug**: The note mentions the patient is on nivolumab and ipilimumab. It also mentions a pruritic rash. However, it explicitly states ""No shortness of breath"". This means the symptom is *not* present, and therefore cannot be linked to the drug in this note.
+3.  **Attribution to Another Drug or Confirmed Etiology**: The note does not attribute shortness of breath to any other drug or etiology. In fact, it explicitly denies the presence of the symptom.
+4.  **Certainty Check**: The note explicitly states the *absence* of the symptom. There is no mention of the symptom being caused by anything.
+5.  **Classification**: Since the symptom is explicitly stated as *not* being present, and there's no mention of its cause or relationship to the input drug (or anything else), the classification should be `other`. The supporting evidence is the phrase stating the absence of the symptom.
+
+**JSON Construction**:
+- `symptom`: ""shortness of breath""
+- `input_drug`: ""nivolumab""
+- `etiology_classification`: ""other""
+- `supporting_evidence`: ""No shortness of breath.""
+- `reasoning`: ""The note explicitly states the absence of the symptom ('No shortness of breath'), providing no information about its cause or relationship to the input drug.""<unused95>```json
+{
+  ""symptom"": ""shortness of breath"",
+  ""input_drug"": ""nivolumab"",
+  ""etiology_classification"": ""other"",
+  ""supporting_evidence"": ""No shortness of breath."",
+  ""reasoning"": ""The note explicitly states the absence of the symptom ('No shortness of breath'), providing no information about its cause or relationship to the input drug.""
+}
+```"
+12,R006,pembrolizumab,Arthralgia,"Melanoma patient on pembrolizumab reports no new symptoms. Denies diarrhea, rash, or <symptom> joint pain </symptom>. Physical exam normal.","<unused94>thought
+The user wants me to classify the relationship between the symptom 'joint pain' and the input drug 'pembrolizumab' based on the provided clinical note.
+
+1.  **Identify the symptom and input drug:**
+    *   Symptom: joint pain
+    *   Input Drug: pembrolizumab
+
+2.  **Analyze the note for attribution:**
+    *   The note states: ""Melanoma patient on pembrolizumab reports no new symptoms. Denies diarrhea, rash, or <symptom> joint pain </symptom>.""
+    *   The patient *denies* joint pain. There is no mention of joint pain being caused by pembrolizumab or anything else.
+    *   The symptom is simply listed as something the patient *does not* have.
+
+3.  **Apply classification rules:**
+    *   **Rule 1 (highly_suspect_drug_related):** The note does *not* link joint pain to pembrolizumab. The patient denies the symptom. So, this category is not applicable.
+    *   **Rule 2 (highly_suspect_other_drug_or_etiology):** The note does *not* attribute joint pain to any other drug or confirmed non-drug cause. The patient denies the symptom. So, this category is not applicable.
+    *   **Rule 3 (other):** Since the symptom is denied and not attributed to the input drug or any other confirmed cause, it falls into the 'other' category. The symptom is listed but not associated with a cause within the note.
+
+4.  **Construct the JSON output:**
+    *   `symptom`: ""joint pain""
+    *   `input_drug`: ""pembrolizumab""
+    *   `etiology_classification`: ""other""
+    *   `supporting_evidence`: ""Denies diarrhea, rash, or <symptom> joint pain </symptom>.""
+    *   `reasoning`: ""The note explicitly states the patient denies joint pain. There is no attribution of the symptom to the input drug or any other cause.""<unused95>```json
+{
+  ""symptom"": ""joint pain"",
+  ""input_drug"": ""pembrolizumab"",
+  ""etiology_classification"": ""other"",
+  ""supporting_evidence"": ""Denies diarrhea, rash, or <symptom> joint pain </symptom>."",
+  ""reasoning"": ""The clinical note explicitly states the patient denies the symptom ('joint pain'). There is no mention of the symptom being caused by the input drug or any other etiology.""
+}
+```"
+13,R006,pembrolizumab,Diarrhea,"Melanoma patient on pembrolizumab reports no new symptoms. Denies <symptom> diarrhea </symptom>, rash, or joint pain. Physical exam normal.","<unused94>thought
+The user wants me to classify the relationship between the symptom 'diarrhea' and the drug 'pembrolizumab' based on the provided clinical note.
+
+1.  **Identify the Symptom and Input Drug:**
+    *   Symptom: diarrhea
+    *   Input Drug: pembrolizumab
+
+2.  **Analyze the Note for Attribution:**
+    *   The note states: ""Melanoma patient on pembrolizumab reports no new symptoms. Denies <symptom> diarrhea </symptom>, rash, or joint pain.""
+    *   This sentence explicitly states that the patient *denies* diarrhea. It does not link the drug to the symptom. In fact, it indicates the *absence* of the symptom.
+
+3.  **Apply Classification Rules:**
+    *   **Rule 1 (highly_suspect_drug_related):** The note does *not* link diarrhea to pembrolizumab. It states the patient denies it. So, this rule does not apply.
+    *   **Rule 2 (highly_suspect_other_drug_or_etiology):** The note does not mention any other drug or non-drug cause for diarrhea. So, this rule does not apply.
+    *   **Rule 3 (other):** Since the symptom is explicitly denied and not linked to the input drug or any other cause, it falls into the default category.
+
+4.  **Construct JSON Output:**
+    *   `symptom`: ""diarrhea""
+    *   `input_drug`: ""pembrolizumab""
+    *   `etiology_classification`: ""other""
+    *   `supporting_evidence`: ""Denies <symptom> diarrhea </symptom>""
+    *   `reasoning`: ""The note explicitly states the patient denies diarrhea, indicating the absence of the symptom and no link to the input drug.""<unused95>```json
+{
+  ""symptom"": ""diarrhea"",
+  ""input_drug"": ""pembrolizumab"",
+  ""etiology_classification"": ""other"",
+  ""supporting_evidence"": ""Denies <symptom> diarrhea </symptom>"",
+  ""reasoning"": ""The note explicitly states the patient denies the symptom, indicating its absence and no link to the input drug.""
+}
+```"
+14,R006,pembrolizumab,Rash,"Melanoma patient on pembrolizumab reports no new symptoms. Denies diarrhea, <symptom> Rash </symptom>, or joint pain. Physical exam normal.","<unused94>thought
+The user wants me to classify the relationship between the symptom ""Rash"" and the drug ""pembrolizumab"" based on the provided clinical note.
+
+1.  **Target**: The symptom is ""Rash"" and the input drug is ""pembrolizumab"".
+2.  **Attribution to Input Drug**: The note states the patient *denies* Rash. There is no mention of Rash being caused by or related to pembrolizumab.
+3.  **Attribution to Another Drug or Confirmed Etiology**: No other drug or etiology is mentioned as the cause of Rash.
+4.  **Certainty Check**: The note explicitly states the patient does *not* have Rash. This means there's no confirmed link to the input drug or any other cause mentioned in the note.
+5.  **Classification**: Since the symptom is denied and not linked to the input drug or any other confirmed cause within the note, it falls into the `other` category.
+
+**JSON Construction**:
+- `symptom`: ""Rash""
+- `input_drug`: ""pembrolizumab""
+- `etiology_classification`: ""other""
+- `supporting_evidence`: ""Denies diarrhea, <symptom> Rash </symptom>, or joint pain.""
+- `reasoning`: ""The clinical note explicitly states the patient denies having a rash. There is no mention of the rash being related to pembrolizumab or any other cause.""<unused95>```json
+{
+  ""symptom"": ""Rash"",
+  ""input_drug"": ""pembrolizumab"",
+  ""etiology_classification"": ""other"",
+  ""supporting_evidence"": ""Denies diarrhea, <symptom> Rash </symptom>, or joint pain."",
+  ""reasoning"": ""The clinical note explicitly states the patient denies having a rash. There is no mention of the rash being related to pembrolizumab or any other cause.""
+}
+```"
+15,R007,nivolumab,Arthritis,Stage IV small cell lung cancer patient receiving nivolumab. Developed new poly<symptom> Arthritis </symptom> and morning stiffness over past 2 weeks. ESR elevated. Rheumatology consult planned.,"<unused94>thought
+The user wants me to classify the relationship between the symptom 'Arthritis' and the drug 'nivolumab' based on the provided clinical note.
+
+1.  **Identify the symptom and input drug:**
+    *   Symptom: Arthritis
+    *   Input Drug: nivolumab
+
+2.  **Analyze the note for attribution:**
+    *   The note states the patient developed ""new poly<symptom> Arthritis </symptom> and morning stiffness over past 2 weeks"" while receiving nivolumab.
+    *   The note doesn't explicitly state *causation* by nivolumab. It describes the development of arthritis *while* the patient was on the drug.
+    *   It doesn't mention other drugs or causes for the arthritis.
+    *   The timing (development *while* on the drug) suggests a potential link, but the note doesn't use explicit causal language like ""due to,"" ""induced by,"" or ""secondary to nivolumab.""
+
+3.  **Apply classification rules:**
+    *   **Rule 1 (highly_suspect_drug_related):** Requires explicit linkage or clear causal language. This is missing.
+    *   **Rule 2 (highly_suspect_other_drug_or_etiology):** Requires attribution to another drug or confirmed non-drug cause. This is not present.
+    *   **Rule 3 (other):** This category covers ambiguous attribution, temporal association without explicit causation, or unconfirmed causes. The note describes the symptom developing while the patient was on the drug, but without explicitly linking it to the drug as the cause. This fits the description for the 'other' category.
+
+4.  **Construct the JSON output:**
+    *   `symptom`: ""Arthritis""
+    *   `input_drug`: ""nivolumab""
+    *   `etiology_classification`: ""other""
+    *   `supporting_evidence`: ""Developed new polyArthritis and morning stiffness over past 2 weeks.""
+    *   `reasoning`: ""The note mentions the development of arthritis while the patient was receiving nivolumab, but does not explicitly attribute the symptom to the drug or identify another confirmed cause. Temporal association alone does not meet the criteria for 'highly_suspect_drug_related'.""<unused95>```json
+{
+  ""symptom"": ""Arthritis"",
+  ""input_drug"": ""nivolumab"",
+  ""etiology_classification"": ""other"",
+  ""supporting_evidence"": ""Developed new polyArthritis and morning stiffness over past 2 weeks."",
+  ""reasoning"": ""The note describes the development of arthritis while the patient was receiving nivolumab, but it does not explicitly state that the drug caused the symptom. There is no explicit causal language or definitive attribution to the input drug or another cause.""
+}
+```"
+16,R007,nivolumab,Rheumatology,Stage IV small cell lung cancer patient receiving nivolumab. Developed new polyarthritis and morning stiffness over past 2 weeks. ESR elevated. <symptom> RHEUMATOLOGY </symptom> consult planned.,"<unused94>thought
+The user wants me to classify the relationship between the symptom 'RHEUMATOLOGY' and the drug 'nivolumab' based on the provided clinical note.
+
+1.  **Identify the symptom and input drug:**
+    *   Symptom: RHEUMATOLOGY
+    *   Input Drug: nivolumab
+
+2.  **Analyze the text for links between the symptom and the drug:**
+    *   The note states: ""Stage IV small cell lung cancer patient receiving nivolumab. Developed new polyarthritis and morning stiffness over past 2 weeks. ESR elevated. <symptom> RHEUMATOLOGY </symptom> consult planned.""
+    *   The symptom mentioned is 'RHEUMATOLOGY'. The note indicates a 'RHEUMATOLOGY' consult is planned for new polyarthritis and morning stiffness.
+    *   The patient is receiving nivolumab.
+    *   There is no explicit link stated *in the note* between the nivolumab and the need for a rheumatology consult or the symptoms (polyarthritis, morning stiffness) that prompted it. The note simply states the patient is receiving nivolumab and has developed symptoms requiring a rheumatology consult.
+    *   It doesn't say the symptoms are *caused by* nivolumab, nor does it attribute them to another drug or cause.
+
+3.  **Apply the classification rules:**
+    *   **Rule 1 (highly_suspect_drug_related):** The note does *not* explicitly link the need for a rheumatology consult (or the underlying symptoms) to nivolumab. There's no phrase like ""due to,"" ""induced by,"" or similar causal language connecting nivolumab to the rheumatology issue. Therefore, this rule is not met.
+    *   **Rule 2 (highly_suspect_other_drug_or_etiology):** The note does *not* attribute the rheumatology consult or symptoms to another drug or a specific non-drug cause.
+    *   **Rule 3 (other):** Since neither Rule 1 nor Rule 2 is met, this is the appropriate classification. The note mentions the patient is on nivolumab and has symptoms requiring a rheumatology consult, but doesn't establish a causal link between the drug and the symptom/consult.
+
+4.  **Construct the JSON output:**
+    *   `symptom`: ""RHEUMATOLOGY""
+    *   `input_drug`: ""nivolumab""
+    *   `etiology_classification`: ""other""
+    *   `supporting_evidence`: ""Stage IV small cell lung cancer patient receiving nivolumab. Developed new polyarthritis and morning stiffness over past 2 weeks. ESR elevated. <symptom> RHEUMATOLOGY </symptom> consult planned."" (This sentence shows the patient is receiving the drug and has the symptom/consult, but no causal link is established).
+    *   `reasoning`: ""The note indicates the patient is receiving nivolumab and requires a rheumatology consult for new symptoms, but does not explicitly link the drug to the need for the consult or the symptoms themselves.""<unused95>```json
+{
+  ""symptom"": ""RHEUMATOLOGY"",
+  ""input_drug"": ""nivolumab"",
+  ""etiology_classification"": ""other"",
+  ""supporting_evidence"": ""Stage IV small cell lung cancer patient receiving nivolumab. Developed new polyarthritis and morning stiffness over past 2 weeks. ESR elevated. <symptom> RHEUMATOLOGY </symptom> consult planned."",
+  ""reasoning"": ""The note mentions the patient is receiving nivolumab and requires a rheumatology consult for new symptoms, but there is no explicit statement linking the drug to the rheumatology consult or the underlying symptoms.""
+}
+```"
+17,R007,nivolumab,Stiffness,Stage IV small cell lung cancer patient receiving nivolumab. Developed new polyarthritis and morning <symptom> stiffness </symptom> over past 2 weeks. ESR elevated. Rheumatology consult planned.,"<unused94>thought
+The user wants me to classify the relationship between the symptom ""stiffness"" and the drug ""nivolumab"" based on the provided clinical note.
+
+1.  **Identify the symptom and input drug:**
+    *   Symptom: ""stiffness""
+    *   Input Drug: ""nivolumab""
+
+2.  **Analyze the note for attribution:**
+    *   The note mentions ""new polyarthritis and morning <symptom> stiffness </symptom> over past 2 weeks.""
+    *   The patient is receiving nivolumab.
+    *   The note does *not* explicitly link the stiffness to nivolumab. It mentions the patient is receiving nivolumab, but doesn't state the stiffness is caused by it.
+    *   There is no mention of other drugs or specific non-drug causes for the stiffness in this short note.
+
+3.  **Apply classification rules:**
+    *   **Rule 1 (highly_suspect_drug_related):** The note does not explicitly link the stiffness to nivolumab. So, this rule is not met.
+    *   **Rule 2 (highly_suspect_other_drug_or_etiology):** The note does not mention another drug or a confirmed non-drug cause for the stiffness. So, this rule is not met.
+    *   **Rule 3 (other):** Since neither Rule 1 nor Rule 2 is met, the classification should be ""other"". The note describes the symptom but doesn't attribute it to the input drug or any other specific cause.
+
+4.  **Construct the JSON output:**
+    *   `symptom`: ""stiffness""
+    *   `input_drug`: ""nivolumab""
+    *   `etiology_classification`: ""other""
+    *   `supporting_evidence`: ""Developed new polyarthritis and morning <symptom> stiffness </symptom> over past 2 weeks."" (This sentence mentions the symptom but doesn't link it to nivolumab).
+    *   `reasoning`: ""The clinical note mentions the patient developed stiffness while receiving nivolumab, but does not explicitly attribute the stiffness to the drug. There is no mention of other drugs or confirmed non-drug causes.""<unused95>```json
+{
+  ""symptom"": ""stiffness"",
+  ""input_drug"": ""nivolumab"",
+  ""etiology_classification"": ""other"",
+  ""supporting_evidence"": ""Developed new polyarthritis and morning <symptom> stiffness </symptom> over past 2 weeks."",
+  ""reasoning"": ""The clinical note mentions the patient developed stiffness while receiving nivolumab, but does not explicitly attribute the stiffness to the drug. There is no mention of other drugs or confirmed non-drug causes.""
+}
+```"
+18,R008,ipilimumab,Adrenal Insufficiency,"Renal cell carcinoma on ipilimumab monotherapy. Presented with severe fatigue, dizziness, and hypotension. Morning cortisol low, ACTH low. Suspect secondary <symptom> Adrenal insufficiency </symptom> due to hypophysitis.","<unused94>thought
+The user wants me to classify the relationship between the symptom 'Adrenal insufficiency' and the input drug 'ipilimumab' based on the provided clinical note.
+
+1.  **Identify the symptom and input drug:**
+    *   Symptom: Adrenal insufficiency
+    *   Input Drug: ipilimumab
+
+2.  **Analyze the note for links:**
+    *   The note states: ""Suspect secondary <symptom> Adrenal insufficiency </symptom> due to hypophysitis.""
+    *   This sentence explicitly links the adrenal insufficiency to hypophysitis.
+    *   Hypophysitis is a known side effect of ipilimumab.
+    *   The note doesn't directly link adrenal insufficiency to ipilimumab itself, but links it to hypophysitis, which is then implicitly linked to ipilimumab (as the patient is on ipilimumab).
+    *   The phrasing ""Suspect secondary... due to hypophysitis"" indicates the adrenal insufficiency is caused by hypophysitis.
+    *   The note mentions the patient is on ipilimumab (""Renal cell carcinoma on ipilimumab monotherapy."").
+    *   However, the *direct* cause stated for the adrenal insufficiency is hypophysitis, not ipilimumab. The link to ipilimumab is indirect (ipilimumab -> hypophysitis -> adrenal insufficiency).
+
+3.  **Apply Classification Rules:**
+    *   **Rule 1 (highly_suspect_drug_related):** This requires the symptom to be linked *specifically* to the Input Drug. The note links the adrenal insufficiency to hypophysitis, not directly to ipilimumab. Although hypophysitis is a potential side effect of ipilimumab, the note doesn't explicitly state ipilimumab caused the hypophysitis or the adrenal insufficiency. It states the adrenal insufficiency is *due to* hypophysitis. Therefore, Rule 1 does not apply.
+    *   **Rule 2 (highly_suspect_other_drug_or_etiology):** This requires the symptom to be attributed to a different medication or a confirmed non-drug cause. The cause mentioned is hypophysitis, which is a condition/disease, not another drug. The note doesn't state a *different* drug caused it.
+    *   **Rule 3 (other):** This is the default category. Since the link isn't directly to ipilimumab (Rule 1) and isn't attributed to another drug or a confirmed non-drug cause in the way Rule 2 requires (Rule 2), this category seems appropriate. The link is indirect (ipilimumab -> hypophysitis -> adrenal insufficiency), and the note explicitly states the adrenal insufficiency is due to hypophysitis.
+
+4.  **Refine Reasoning:** The note explicitly states the adrenal insufficiency is due to hypophysitis. While ipilimumab is the drug the patient is on and can cause hypophysitis, the *direct* cause cited for the adrenal insufficiency is hypophysitis itself. The note does not explicitly link the adrenal insufficiency *directly* to ipilimumab. Therefore, it doesn't meet the strict criteria for `highly_suspect_drug_related`. It also doesn't fit `highly_suspect_other_drug_or_etiology` because the cause is a condition (hypophysitis), not another drug or a confirmed non-drug cause distinct from the drug's potential effects. Thus, `other` is the most appropriate classification based on the strict rules.
+
+5.  **Construct JSON Output:**
+    *   `symptom`: ""Adrenal insufficiency""
+    *   `input_drug`: ""ipilimumab""
+    *   `etiology_classification`: ""other""
+    *   `supporting_evidence`: ""Suspect secondary Adrenal insufficiency due to hypophysitis.""
+    *   `reasoning`: ""The note explicitly states the adrenal insufficiency is due to hypophysitis, not directly attributed to ipilimumab. Although ipilimumab is the medication the patient is on and can cause hypophysitis, the direct cause cited for the adrenal insufficiency is hypophysitis.""<unused95>```json
+{
+  ""symptom"": ""Adrenal insufficiency"",
+  ""input_drug"": ""ipilimumab"",
+  ""etiology_classification"": ""other"",
+  ""supporting_evidence"": ""Suspect secondary Adrenal insufficiency due to hypophysitis."",
+  ""reasoning"": ""The note explicitly states the adrenal insufficiency is due to hypophysitis, not directly attributed to ipilimumab. Although ipilimumab is the medication the patient is on and can cause hypophysitis, the direct cause cited for the adrenal insufficiency is hypophysitis.""
+}
+```"
+19,R008,ipilimumab,Dizziness,"Renal cell carcinoma on ipilimumab monotherapy. Presented with severe fatigue, <symptom> Dizziness </symptom>, and hypotension. Morning cortisol low, ACTH low. Suspect secondary adrenal insufficiency due to hypophysitis.","<unused94>thought
+The user wants me to classify the relationship between the symptom 'Dizziness' and the drug 'ipilimumab' based on the provided clinical note.
+
+1.  **Identify the symptom and input drug:**
+    *   Symptom: Dizziness
+    *   Input Drug: ipilimumab
+
+2.  **Analyze the note for links between the symptom and the input drug:**
+    *   The note mentions ""severe fatigue, <symptom> Dizziness </symptom>, and hypotension.""
+    *   It then mentions ""Morning cortisol low, ACTH low. Suspect secondary adrenal insufficiency due to hypophysitis.""
+    *   The patient is on ipilimumab monotherapy.
+    *   The symptoms (fatigue, dizziness, hypotension) are presented alongside the suspicion of secondary adrenal insufficiency due to hypophysitis. Hypophysitis is a known potential side effect of ipilimumab.
+    *   The note does not explicitly state that the dizziness is *due to* ipilimumab, or *due to* the hypophysitis, or *due to* the adrenal insufficiency. It lists the symptoms and then presents the suspected underlying cause (hypophysitis/adrenal insufficiency).
+
+3.  **Evaluate against classification rules:**
+    *   **highly_suspect_drug_related:** Is the dizziness *specifically* linked to ipilimumab? The note doesn't explicitly say ""Dizziness due to ipilimumab"" or ""ipilimumab caused dizziness"". It presents dizziness as a symptom alongside hypotension and fatigue, and then links the suspected *cause* (hypophysitis/adrenal insufficiency) to the drug indirectly. However, the direct link between dizziness and ipilimumab is not explicitly stated in the text provided.
+    *   **highly_suspect_other_drug_or_etiology:** Is the dizziness clearly attributed to a different medication or a confirmed non-drug cause? No, the suspected cause (hypophysitis/adrenal insufficiency) is linked to the ipilimumab, not another drug or a different non-drug cause.
+    *   **other:** Since there's no explicit link between the dizziness and ipilimumab, and no clear attribution to another specific cause, this seems the most appropriate category. The symptoms are listed, and a potential underlying cause related to the drug is suspected, but the direct link for dizziness isn't confirmed in the text.
+
+4.  **Construct the JSON output:**
+    *   `symptom`: ""Dizziness""
+    *   `input_drug`: ""ipilimumab""
+    *   `etiology_classification`: ""other""
+    *   `supporting_evidence`: ""Presented with severe fatigue, <symptom> Dizziness </symptom>, and hypotension. Morning cortisol low, ACTH low. Suspect secondary adrenal insufficiency due to hypophysitis.""
+    *   `reasoning`: ""The note lists dizziness as a symptom occurring in the patient on ipilimumab. While adrenal insufficiency (potentially related to ipilimumab) is suspected, the note does not explicitly state that the dizziness is caused by ipilimumab or the adrenal insufficiency. There is no direct causal link stated for the dizziness.""<unused95>```json
+{
+  ""symptom"": ""Dizziness"",
+  ""input_drug"": ""ipilimumab"",
+  ""etiology_classification"": ""other"",
+  ""supporting_evidence"": ""Presented with severe fatigue, <symptom> Dizziness </symptom>, and hypotension. Morning cortisol low, ACTH low. Suspect secondary adrenal insufficiency due to hypophysitis."",
+  ""reasoning"": ""The note lists dizziness as a symptom occurring in the patient on ipilimumab. While adrenal insufficiency (potentially related to ipilimumab) is suspected, the note does not explicitly state that the dizziness is caused by ipilimumab or the adrenal insufficiency. There is no direct causal link stated for the dizziness.""
+}
+```"
+20,R008,ipilimumab,Fatigue,"Renal cell carcinoma on ipilimumab monotherapy. Presented with severe <symptom> Fatigue </symptom>, dizziness, and hypotension. Morning cortisol low, ACTH low. Suspect secondary adrenal insufficiency due to hypophysitis.","<unused94>thought
+The user wants me to classify the relationship between the symptom 'Fatigue' and the input drug 'ipilimumab' based on the provided clinical note.
+
+1.  **Identify the symptom and input drug:**
+    *   Symptom: Fatigue
+    *   Input Drug: ipilimumab
+
+2.  **Analyze the note for links:**
+    *   The note states: ""Renal cell carcinoma on ipilimumab monotherapy. Presented with severe <symptom> Fatigue </symptom>, dizziness, and hypotension. Morning cortisol low, ACTH low. Suspect secondary adrenal insufficiency due to hypophysitis.""
+    *   The note mentions fatigue as a presenting symptom in a patient on ipilimumab.
+    *   It also mentions low cortisol and ACTH, and suspects secondary adrenal insufficiency due to hypophysitis. Hypophysitis is a known side effect of ipilimumab. Adrenal insufficiency can cause fatigue.
+    *   However, the note uses the word ""Suspect"" regarding the adrenal insufficiency. It doesn't explicitly state that the *fatigue* is *caused* by the ipilimumab, the adrenal insufficiency, or the hypophysitis. It's listed as a symptom the patient presented with.
+
+3.  **Apply Classification Rules:**
+    *   **Rule 1 (highly_suspect_drug_related):** Does the note *specifically* link fatigue to ipilimumab? No. While the patient is on ipilimumab and has fatigue, and the underlying suspected cause (adrenal insufficiency potentially from ipilimumab-induced hypophysitis) can cause fatigue, the note doesn't explicitly state the fatigue *is caused by* ipilimumab or the related conditions. It's presented as a symptom.
+    *   **Rule 2 (highly_suspect_other_drug_or_etiology):** Is the fatigue clearly and definitively attributed to a different medication or a confirmed non-drug cause? No. The suspected cause (adrenal insufficiency due to hypophysitis) is mentioned as a suspicion, not a confirmed fact causing the fatigue in this specific sentence.
+    *   **Rule 3 (other):** Since neither Rule 1 nor Rule 2 are met, this is the default category. The fatigue is listed as a symptom the patient presented with while on ipilimumab, but the direct causal link to the drug or a confirmed etiology isn't explicitly stated in the provided text.
+
+4.  **Construct JSON:**
+    *   symptom: ""Fatigue""
+    *   input_drug: ""ipilimumab""
+    *   etiology_classification: ""other""
+    *   supporting_evidence: ""Presented with severe <symptom> Fatigue </symptom>, dizziness, and hypotension.""
+    *   reasoning: ""The note lists fatigue as a presenting symptom in a patient on ipilimumab, but does not explicitly state that the fatigue is caused by the drug or a confirmed condition. The suspected underlying cause (adrenal insufficiency) is mentioned as a suspicion.""<unused95>```json
+{
+  ""symptom"": ""Fatigue"",
+  ""input_drug"": ""ipilimumab"",
+  ""etiology_classification"": ""other"",
+  ""supporting_evidence"": ""Presented with severe <symptom> Fatigue </symptom>, dizziness, and hypotension."",
+  ""reasoning"": ""The note lists fatigue as a presenting symptom in a patient on ipilimumab, but does not explicitly state that the fatigue is caused by the drug or a confirmed condition. The suspected underlying cause (adrenal insufficiency) is mentioned as a suspicion.""
+}
+```"
+21,R009,Atezolizumab,Erythema,"Metastatic melanoma on atezolizumab. Mild <symptom> erythema </symptom>tous rash on upper chest, responding to topical steroids. No GI or respiratory symptoms.","<unused94>thought
+The user wants me to classify the relationship between the symptom 'erythematous rash' and the input drug 'Atezolizumab' based on the provided clinical note.
+
+1.  **Identify the symptom and input drug:**
+    *   Symptom: erythematous rash
+    *   Input Drug: Atezolizumab
+
+2.  **Analyze the note for links:**
+    *   The note mentions ""Metastatic melanoma on atezolizumab."" This establishes the patient is taking Atezolizumab.
+    *   The note then describes ""Mild erythematous rash on upper chest, responding to topical steroids.""
+    *   There is no explicit causal link stated between the Atezolizumab and the erythematous rash. It's simply described as present. It's not stated as being *caused* by the drug, *due to* the drug, or *secondary to* the drug. The description focuses on the characteristics of the rash (mild, erythematous, location, response to treatment).
+
+3.  **Apply Classification Rules:**
+    *   **Rule 1 (highly_suspect_drug_related):** The note does *not* explicitly link the rash to Atezolizumab using causal language (e.g., ""due to,"" ""induced by,"" ""secondary to""). Therefore, this rule is not met.
+    *   **Rule 2 (highly_suspect_other_drug_or_etiology):** The note does *not* attribute the rash to another drug or a confirmed non-drug cause. Therefore, this rule is not met.
+    *   **Rule 3 (other):** Since neither Rule 1 nor Rule 2 is met, the classification falls into the 'other' category. The symptom is present, but no specific cause is attributed within the note.
+
+4.  **Construct JSON output:**
+    *   `symptom`: ""erythematous rash""
+    *   `input_drug`: ""Atezolizumab""
+    *   `etiology_classification`: ""other""
+    *   `supporting_evidence`: ""Metastatic melanoma on atezolizumab. Mild erythematous rash on upper chest, responding to topical steroids."" (This sentence mentions both the drug and the symptom, but lacks a causal link).
+    *   `reasoning`: ""The note describes the presence of an erythematous rash in a patient taking Atezolizumab, but it does not explicitly state that the rash is caused by the drug. No other cause is mentioned.""<unused95>```json
+{
+  ""symptom"": ""erythematous rash"",
+  ""input_drug"": ""Atezolizumab"",
+  ""etiology_classification"": ""other"",
+  ""supporting_evidence"": ""Metastatic melanoma on atezolizumab. Mild erythematous rash on upper chest, responding to topical steroids."",
+  ""reasoning"": ""The clinical note mentions the patient is taking Atezolizumab and describes the presence of an erythematous rash, but it does not explicitly state a causal link between the drug and the rash. Therefore, the relationship cannot be definitively classified as drug-related based on the provided text.""
+}
+```"
+22,R009,Atezolizumab,Rash,"Metastatic melanoma on atezolizumab. Mild erythematous <symptom> Rash </symptom> on upper chest, responding to topical steroids. No GI or respiratory symptoms.","<unused94>thought
+The user wants me to classify the relationship between the symptom ""Rash"" and the drug ""Atezolizumab"" based on the provided clinical note.
+
+1.  **Identify the Symptom and Input Drug:**
+    *   Symptom: Rash
+    *   Input Drug: Atezolizumab
+
+2.  **Analyze the Note for Attribution:**
+    *   The note says: ""Mild erythematous <symptom> Rash </symptom> on upper chest, responding to topical steroids.""
+    *   There is no explicit statement linking the Rash to Atezolizumab.
+    *   There is no mention of another drug causing the rash.
+    *   There is no mention of a non-drug cause for the rash.
+    *   The rash is described as ""mild erythematous"" and ""responding to topical steroids"". This suggests a potential reaction, but the note doesn't explicitly attribute it to the atezolizumab. It could be unrelated or due to another cause not mentioned.
+
+3.  **Apply Classification Rules:**
+    *   **Rule 1 (highly_suspect_drug_related):** The note does *not* explicitly link the Rash to Atezolizumab. Phrases like ""due to,"" ""induced by,"" or ""secondary to"" are absent. There's no shorthand like ""tolerated [Input Drug] well except for <symptom>"". Therefore, this category is not met.
+    *   **Rule 2 (highly_suspect_other_drug_or_etiology):** The note does *not* attribute the Rash to another drug or a confirmed non-drug cause. Therefore, this category is not met.
+    *   **Rule 3 (other):** Since neither Rule 1 nor Rule 2 is met, the classification defaults to ""other"". The note describes the symptom but doesn't provide a clear causal link to the input drug or any other specific cause.
+
+4.  **Construct JSON Output:**
+    *   `symptom`: ""Rash""
+    *   `input_drug`: ""Atezolizumab""
+    *   `etiology_classification`: ""other""
+    *   `supporting_evidence`: ""Mild erythematous Rash on upper chest, responding to topical steroids.""
+    *   `reasoning`: ""The note describes the rash but does not explicitly attribute it to Atezolizumab, another drug, or a specific non-drug cause. There is no clear causal link established.""<unused95>```json
+{
+  ""symptom"": ""Rash"",
+  ""input_drug"": ""Atezolizumab"",
+  ""etiology_classification"": ""other"",
+  ""supporting_evidence"": ""Mild erythematous Rash on upper chest, responding to topical steroids."",
+  ""reasoning"": ""The clinical note describes the presence of a rash but does not explicitly link it to the Atezolizumab or any other specific cause. Therefore, based on the strict criteria, the relationship cannot be definitively classified as drug-related or caused by another etiology.""
+}
+```"

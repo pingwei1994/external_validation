@@ -1,0 +1,264 @@
+,report_id,standard_drug,drug_adjacent,output
+0,R001,nivolumab,"['Patient with metastatic melanoma currently receiving <drug> NIVOLUMAB </drug> every 2 weeks. No new symptoms reported. Physical exam unremarkable. No evidence of rash, diarrhea, or fatigue.']","<unused94>thought
+The user wants me to analyze a clinical note to find the start date of a specific drug.
+
+**Input:**
+Clinical Note: 'Patient with metastatic melanoma currently receiving <drug> NIVOLUMAB </drug> every 2 weeks. No new symptoms reported. Physical exam unremarkable. No evidence of rash, diarrhea, or fatigue.'
+Input Drug: nivolumab
+
+**Step 1: Identify the Tagged Drug**
+The text inside the tags is ""NIVOLUMAB"".
+
+**Step 2: Verify Drug Match**
+The tagged text ""NIVOLUMAB"" matches the input drug ""nivolumab"" (case-insensitive match).
+Decision: DRUG MATCH
+
+**Step 3: Identify Valid Start Date**
+The note says the patient is ""currently receiving"" Nivolumab. This implies the drug is ongoing but doesn't explicitly state a *start* date. There are no keywords like ""started"", ""initiated"", ""first dose"", or a specific date mentioned in relation to the drug's initiation.
+Therefore, no valid start date is found.
+Decision: date_found = false
+
+**Step 4: Date Normalization Rules**
+Since no date was found, this step is not applicable.
+
+**Step 5: Output JSON**
+Construct the JSON output based on the findings.
+
+- tagged_drug_text: ""NIVOLUMAB""
+- input_drug: ""nivolumab""
+- drug_match: ""DRUG MATCH""
+- date_found: false
+- normalized_start_date: ""None""
+- evidence_sentence: ""None"" (as no start date was found)<unused95>```json
+{
+  ""tagged_drug_text"": ""NIVOLUMAB"",
+  ""input_drug"": ""nivolumab"",
+  ""drug_match"": ""DRUG MATCH"",
+  ""date_found"": false,
+  ""normalized_start_date"": ""None"",
+  ""evidence_sentence"": ""None""
+}
+```"
+1,R002,pembrolizumab,"['The patient has stage IV non-small cell lung cancer on <drug> PEMBROLIZUMAB </drug> monotherapy. Over the past week, developed mild diarrhea and fatigue. Consider immune-mediated colitis; stool studies pending.']","<unused94>thought
+The user wants me to analyze a clinical note to find if a specific drug, pembrolizumab, has a documented start date.
+
+**Step 1: Identify the Tagged Drug**
+The tagged drug is `PEMBROLIZUMAB`.
+
+**Step 2: Verify Drug Match**
+The input drug is `pembrolizumab`.
+The tagged drug `PEMBROLIZUMAB` matches the input drug `pembrolizumab`.
+Decision: DRUG MATCH
+
+**Step 3: Identify Valid Start Date**
+The sentence containing the drug is: ""The patient has stage IV non-small cell lung cancer on <drug> PEMBROLIZUMAB </drug> monotherapy.""
+This sentence mentions the drug but does not contain any date information or initiation keywords like ""started"", ""initiated"", ""first dose"".
+Therefore, no valid start date is found.
+
+**Date Normalization Rules:**
+Since no date is found, the normalized date will be None.
+
+**Output JSON:**
+I will construct the JSON output based on the findings.<unused95>```json
+{
+  ""tagged_drug_text"": ""PEMBROLIZUMAB"",
+  ""input_drug"": ""pembrolizumab"",
+  ""drug_match"": ""DRUG MATCH"",
+  ""date_found"": false,
+  ""normalized_start_date"": ""None"",
+  ""evidence_sentence"": null
+}
+```"
+2,R003,ipilimumab,"['History of renal cell carcinoma on combination nivolumab and <drug> IPILIMUMAB </drug>. Reports pruritic rash over trunk and extremities, started 5 days ago. No shortness of breath.']","<unused94>thought
+The user wants me to analyze a clinical note to find the start date of 'ipilimumab'.
+
+**Step 1: Identify the Tagged Drug**
+The tagged drug is ""IPILIMUMAB"".
+
+**Step 2: Verify Drug Match**
+The tagged drug ""IPILIMUMAB"" matches the input drug ""ipilimumab"".
+Decision: DRUG MATCH
+
+**Step 3: Identify Valid Start Date**
+The sentence ""History of renal cell carcinoma on combination nivolumab and <drug> IPILIMUMAB </drug>"" mentions the drug but does not give a start date.
+The sentence ""Reports pruritic rash over trunk and extremities, started 5 days ago"" refers to the rash, not the drug initiation.
+There is no explicit start date for ipilimumab mentioned in the note.
+Decision: date_found = false
+
+**Step 4: Date Normalization Rules**
+Since no date was found, this step is not applicable.
+
+**Step 5: Output JSON**
+Construct the JSON output based on the findings.<unused95>```json
+{
+  ""tagged_drug_text"": ""IPILIMUMAB"",
+  ""input_drug"": ""ipilimumab"",
+  ""drug_match"": ""DRUG MATCH"",
+  ""date_found"": false,
+  ""normalized_start_date"": ""None"",
+  ""evidence_sentence"": null
+}
+```"
+3,R003,nivolumab,"['History of renal cell carcinoma on combination <drug> NIVOLUMAB </drug> and ipilimumab. Reports pruritic rash over trunk and extremities, started 5 days ago. No shortness of breath.']","<unused94>thought
+The user wants me to analyze a clinical note to find a start date for the drug 'nivolumab'.
+
+**Step 1: Identify the Tagged Drug**
+The tagged drug is `<drug> NIVOLUMAB </drug>`.
+
+**Step 2: Verify Drug Match**
+The tagged drug ""NIVOLUMAB"" matches the input drug ""nivolumab"".
+Decision: DRUG MATCH
+
+**Step 3: Identify Valid Start Date**
+The sentence mentions ""started 5 days ago"". This is not a specific date with at least two components (Year, Month, Day).
+Therefore, no valid start date is found.
+
+**Output JSON**
+I need to construct the JSON output based on the analysis.
+- `tagged_drug_text`: "" NIVOLUMAB ""
+- `input_drug`: ""nivolumab""
+- `drug_match`: ""DRUG MATCH""
+- `date_found`: false
+- `normalized_start_date`: ""None""
+- `evidence_sentence`: ""Reports pruritic rash over trunk and extremities, started 5 days ago."" (This sentence mentions the drug and the relative timing, but not a specific date).<unused95>```json
+{
+  ""tagged_drug_text"": "" NIVOLUMAB "",
+  ""input_drug"": ""nivolumab"",
+  ""drug_match"": ""DRUG MATCH"",
+  ""date_found"": false,
+  ""normalized_start_date"": ""None"",
+  ""evidence_sentence"": ""Reports pruritic rash over trunk and extremities, started 5 days ago.""
+}
+```"
+4,R006,pembrolizumab,"['Melanoma patient on <drug> PEMBROLIZUMAB </drug> reports no new symptoms. Denies diarrhea, rash, or joint pain. Physical exam normal.']","<unused94>thought
+The user wants me to analyze a clinical note to find if a specific drug, `pembrolizumab`, has an explicitly documented start date.
+
+**Step 1: Identify the Tagged Drug**
+The tagged drug is `PEMBROLIZUMAB`.
+
+**Step 2: Verify Drug Match**
+The tagged drug `PEMBROLIZUMAB` matches the input drug `pembrolizumab`.
+Decision: DRUG MATCH
+
+**Step 3: Identify Valid Start Date**
+The sentence mentions the patient is ""on <drug>PEMBROLIZUMAB</drug>"". This indicates the patient is currently taking the drug, but it does not specify a start date or initiation date. There is no explicit date associated with the start of the drug.
+Therefore, `date_found` is false.
+
+**Step 4: Date Normalization Rules**
+Since `date_found` is false, I will output `None` for `normalized_start_date`.
+
+**Step 5: Output JSON**
+Construct the JSON output based on the analysis.
+
+```json
+{
+  ""tagged_drug_text"": ""PEMBROLIZUMAB"",
+  ""input_drug"": ""pembrolizumab"",
+  ""drug_match"": ""DRUG MATCH"",
+  ""date_found"": false,
+  ""normalized_start_date"": ""None"",
+  ""evidence_sentence"": ""Melanoma patient on <drug> PEMBROLIZUMAB </drug> reports no new symptoms.""
+}
+```<unused95>```json
+{
+  ""tagged_drug_text"": ""PEMBROLIZUMAB"",
+  ""input_drug"": ""pembrolizumab"",
+  ""drug_match"": ""DRUG MATCH"",
+  ""date_found"": false,
+  ""normalized_start_date"": ""None"",
+  ""evidence_sentence"": ""Melanoma patient on <drug> PEMBROLIZUMAB </drug> reports no new symptoms.""
+}
+```"
+5,R007,nivolumab,['Stage IV small cell lung cancer patient receiving <drug> NIVOLUMAB </drug>. Developed new polyarthritis and morning stiffness over past 2 weeks. ESR elevated. Rheumatology consult planned.'],"<unused94>thought
+The user wants me to analyze a clinical note to find the start date of a specific drug.
+
+**Step 1: Identify the Tagged Drug**
+The tagged drug is `NIVOLUMAB`.
+
+**Step 2: Verify Drug Match**
+The input drug is `nivolumab`. The tagged drug `NIVOLUMAB` matches the input drug `nivolumab`.
+Decision: DRUG MATCH
+
+**Step 3: Identify Valid Start Date**
+The sentence is: 'Stage IV small cell lung cancer patient receiving <drug> NIVOLUMAB </drug>. Developed new polyarthritis and morning stiffness over past 2 weeks. ESR elevated. Rheumatology consult planned.'
+The sentence mentions the patient is *receiving* NIVOLUMAB. It does not contain any explicit start date like ""started"", ""initiated"", ""first dose"" along with a date.
+Therefore, no valid start date is found.
+
+**Date Normalization Rules:**
+Not applicable as no date was found.
+
+**Output JSON:**
+Construct the JSON output based on the findings.<unused95>```json
+{
+  ""tagged_drug_text"": ""NIVOLUMAB"",
+  ""input_drug"": ""nivolumab"",
+  ""drug_match"": ""DRUG MATCH"",
+  ""date_found"": false,
+  ""normalized_start_date"": ""None"",
+  ""evidence_sentence"": ""None""
+}
+```"
+6,R008,ipilimumab,"['Renal cell carcinoma on <drug> IPILIMUMAB </drug> monotherapy. Presented with severe fatigue, dizziness, and hypotension. Morning cortisol low, ACTH low. Suspect secondary adrenal insufficiency due to hypophysitis.']","<unused94>thought
+The user wants me to analyze a clinical note to find if the drug 'ipilimumab' has a documented start date.
+
+**Step 1: Identify the Tagged Drug**
+The tagged drug is ""IPILIMUMAB"".
+
+**Step 2: Verify Drug Match**
+The input drug is ""ipilimumab"". The tagged drug ""IPILIMUMAB"" is an exact match (case-insensitive).
+Decision: DRUG MATCH
+
+**Step 3: Identify Valid Start Date**
+The sentence mentions ""Renal cell carcinoma on <drug> IPILIMUMAB </drug> monotherapy"".
+This sentence indicates the patient is *on* ipilimumab, but it doesn't specify *when* it was started. There are no keywords like ""started"", ""initiated"", ""first dose"", or any specific date mentioned in relation to the drug.
+Therefore, no valid start date is found.
+
+**Step 4: Date Normalization Rules**
+Since no date was found, the normalized date will be None.
+
+**Step 5: Output JSON**
+Construct the JSON output based on the findings.<unused95>```json
+{
+  ""tagged_drug_text"": ""IPILIMUMAB"",
+  ""input_drug"": ""ipilimumab"",
+  ""drug_match"": ""DRUG MATCH"",
+  ""date_found"": false,
+  ""normalized_start_date"": ""None"",
+  ""evidence_sentence"": ""Renal cell carcinoma on <drug> IPILIMUMAB </drug> monotherapy.""
+}
+```"
+7,R009,Atezolizumab,"['Metastatic melanoma on <drug> Atezolizumab </drug>. Mild erythematous rash on upper chest, responding to topical steroids. No GI or respiratory symptoms.']","<unused94>thought
+The user wants me to analyze a clinical note to determine if a specific drug, Atezolizumab, has an explicitly documented start date.
+
+**Step 1: Identify the Tagged Drug**
+The tagged drug is ""Atezolizumab"".
+
+**Step 2: Verify Drug Match**
+The tagged drug ""Atezolizumab"" matches the input drug ""Atezolizumab"".
+Decision: DRUG MATCH
+
+**Step 3: Identify Valid Start Date**
+The sentence mentions ""Metastatic melanoma on <drug> Atezolizumab </drug>"". It does not mention any start date, initiation, or first dose. There are no dates present in the note.
+Therefore, no valid start date is found.
+
+**Date Normalization Rules:**
+Since no date is found, the normalized date will be None.
+
+**Output JSON:**
+I will construct the JSON output based on the findings.
+
+*   tagged_drug_text: ""Atezolizumab""
+*   input_drug: ""Atezolizumab""
+*   drug_match: ""DRUG MATCH""
+*   date_found: false
+*   normalized_start_date: ""None""
+*   evidence_sentence: None (since no date was found)<unused95>```json
+{
+  ""tagged_drug_text"": ""Atezolizumab"",
+  ""input_drug"": ""Atezolizumab"",
+  ""drug_match"": ""DRUG MATCH"",
+  ""date_found"": false,
+  ""normalized_start_date"": ""None"",
+  ""evidence_sentence"": null
+}
+```"

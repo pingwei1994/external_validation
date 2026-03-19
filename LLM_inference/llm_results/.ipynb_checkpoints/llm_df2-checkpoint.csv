@@ -1,0 +1,376 @@
+,report_id,standard_symptom,symptom_adjacent,output
+0,R001,Diarrhea,"Patient with metastatic melanoma currently receiving nivolumab every 2 weeks. No new symptoms reported. Physical exam unremarkable. No evidence of rash, <symptom> diarrhea </symptom>, or fatigue.","<unused94>thought
+The user wants me to analyze a clinical note to determine if the symptom 'diarrhea' is present in the patient.
+
+**Step 1: Extract the Symptom**
+The sentence containing `<symptom>diarrhea</symptom>` is: ""No evidence of rash, <symptom> diarrhea </symptom>, or fatigue.""
+The extracted symptom is ""diarrhea"".
+
+**Step 2: Label the Symptom**
+The sentence states ""No evidence of... diarrhea"". This is an explicit negation, indicating the patient does *not* have the symptom. Therefore, the label should be ""NO CLEAR EVIDENCE OF SYMPTOM IN PATIENT"".
+
+**Reasoning:** The sentence explicitly states the absence of the symptom (""No evidence of... diarrhea""). This falls under the ""Explicit Negation"" category in the instructions.
+
+**Summary:** The note explicitly states the patient does not have diarrhea.
+
+**Output Generation:**
+Create the JSON output following the specified format.<unused95>```json
+{
+  ""step1_extracted_symptom"": ""diarrhea"",
+  ""step1_complete_sentence"": ""No evidence of rash, <symptom> diarrhea </symptom>, or fatigue."",
+  ""step2_analysis"": {
+    ""label"": ""NO CLEAR EVIDENCE OF SYMPTOM IN PATIENT"",
+    ""reasoning"": ""The sentence explicitly states 'No evidence of... diarrhea', which indicates the absence of the symptom in the patient. This falls under the category of Explicit Negation.""
+  },
+  ""summary"": ""The symptom 'diarrhea' is explicitly noted as absent in the patient.""
+}
+```"
+1,R001,Fatigue,"Patient with metastatic melanoma currently receiving nivolumab every 2 weeks. No new symptoms reported. Physical exam unremarkable. No evidence of rash, diarrhea, or <symptom> Fatigue </symptom>.","<unused94>thought
+The user wants me to analyze a clinical note to extract a symptom and determine if it's present in the patient.
+
+**Step 1: Extract Symptom and Sentence**
+- The symptom marked is `<symptom> Fatigue </symptom>`.
+- The sentence containing the symptom is: ""No evidence of rash, diarrhea, or <symptom> Fatigue </symptom>.""
+
+**Step 2: Label the Symptom**
+- The sentence explicitly states ""No evidence of... Fatigue"".
+- This is a direct negation of the symptom in the patient.
+- According to the rules, explicit negation (""No..."", ""Negative for..."") falls under **NO CLEAR EVIDENCE OF SYMPTOM IN PATIENT**.
+
+**Constructing the Output**
+- `step1_extracted_symptom`: ""Fatigue""
+- `step1_complete_sentence`: ""No evidence of rash, diarrhea, or <symptom> Fatigue </symptom>.""
+- `step2_analysis`:
+    - `label`: ""NO CLEAR EVIDENCE OF SYMPTOM IN PATIENT""
+    - `reasoning`: ""The sentence explicitly states 'No evidence of... Fatigue', indicating the absence of this symptom in the patient.""
+- `summary`: ""The note explicitly states there is no evidence of fatigue in the patient.""<unused95>```json
+{
+  ""step1_extracted_symptom"": ""Fatigue"",
+  ""step1_complete_sentence"": ""No evidence of rash, diarrhea, or <symptom> Fatigue </symptom>."",
+  ""step2_analysis"": {
+    ""label"": ""NO CLEAR EVIDENCE OF SYMPTOM IN PATIENT"",
+    ""reasoning"": ""The sentence explicitly states 'No evidence of... Fatigue', indicating the absence of this symptom in the patient. This falls under the explicit negation category.""
+  },
+  ""summary"": ""The note explicitly states there is no evidence of fatigue in the patient.""
+}
+```"
+2,R001,Rash,"Patient with metastatic melanoma currently receiving nivolumab every 2 weeks. No new symptoms reported. Physical exam unremarkable. No evidence of <symptom> Rash </symptom>, diarrhea, or fatigue.","```json
+{
+  ""step1_extracted_symptom"": ""Rash"",
+  ""step1_complete_sentence"": ""No evidence of Rash, diarrhea, or fatigue."",
+  ""step2_analysis"": {
+    ""label"": ""NO CLEAR EVIDENCE OF SYMPTOM IN PATIENT"",
+    ""reasoning"": ""The sentence explicitly states 'No evidence of Rash', indicating the absence of this symptom in the patient. This falls under the 'Explicit Negation' category.""
+  },
+  ""summary"": ""The symptom 'Rash' is explicitly stated as not being present in the patient.""
+}
+```"
+3,R002,Colitis,"The patient has stage IV non-small cell lung cancer on pembrolizumab monotherapy. Over the past week, developed mild diarrhea and fatigue. Consider immune-mediated <symptom> colitis </symptom>; stool studies pending.","```json
+{
+  ""step1_extracted_symptom"": ""colitis"",
+  ""step1_complete_sentence"": ""Consider immune-mediated colitis; stool studies pending."",
+  ""step2_analysis"": {
+    ""label"": ""NO CLEAR EVIDENCE OF SYMPTOM IN PATIENT"",
+    ""reasoning"": ""The sentence uses the phrase 'Consider immune-mediated colitis', which suggests it is a potential diagnosis or something to be considered based on the patient's presentation (diarrhea and fatigue mentioned earlier in the note), rather than a confirmed or currently present symptom. It falls under the 'Hypothetical / Conditional / Undiagnosed' category.""
+  },
+  ""summary"": ""The symptom 'colitis' is mentioned as a potential condition to consider, not as a confirmed symptom present in the patient.""
+}
+```"
+4,R002,Diarrhea,"The patient has stage IV non-small cell lung cancer on pembrolizumab monotherapy. Over the past week, developed mild <symptom> diarrhea </symptom> and fatigue. Consider immune-mediated colitis; stool studies pending.","```json
+{
+  ""step1_extracted_symptom"": ""diarrhea"",
+  ""step1_complete_sentence"": ""Over the past week, developed mild <symptom> diarrhea </symptom> and fatigue."",
+  ""step2_analysis"": {
+    ""label"": ""SYMPTOM PRESENT IN PATIENT"",
+    ""reasoning"": ""The sentence explicitly states that the patient 'developed mild diarrhea' over the past week, indicating the patient has experienced this symptom.""
+  },
+  ""summary"": ""The symptom 'diarrhea' is present in the patient, as the note states they developed it recently.""
+}
+```"
+5,R002,Fatigue,"The patient has stage IV non-small cell lung cancer on pembrolizumab monotherapy. Over the past week, developed mild diarrhea and <symptom> Fatigue </symptom>. Consider immune-mediated colitis; stool studies pending.","<unused94>thought
+The user wants me to analyze a clinical note to extract a specific symptom and determine if it's present in the patient.
+
+**Step 1: Extract Symptom**
+- The symptom marked is `<symptom> Fatigue </symptom>`.
+- The exact word/phrase is ""Fatigue"".
+- The sentence containing the symptom is: ""Over the past week, developed mild diarrhea and <symptom> Fatigue </symptom>.""
+
+**Step 2: Label Symptom**
+- The sentence states the patient ""developed"" fatigue ""over the past week"".
+- This indicates a recent, past experience of the symptom.
+- This fits the criteria for ""SYMPTOM PRESENT IN PATIENT"" (specifically, the ""previously had"" or ""occurred"" aspect).
+- The sentence directly links the symptom to the patient's recent experience. It's not hypothetical, a side effect list, family history, etc.
+
+**Output Generation**
+- `step1_extracted_symptom`: ""Fatigue""
+- `step1_complete_sentence`: ""Over the past week, developed mild diarrhea and <symptom> Fatigue </symptom>.""
+- `step2_analysis`:
+    - `label`: ""SYMPTOM PRESENT IN PATIENT""
+    - `reasoning`: ""The sentence explicitly states that the patient 'developed' fatigue 'over the past week', indicating a recent past experience of the symptom.""
+- `summary`: ""The patient recently developed fatigue over the past week.""<unused95>```json
+{
+  ""step1_extracted_symptom"": ""Fatigue"",
+  ""step1_complete_sentence"": ""Over the past week, developed mild diarrhea and <symptom> Fatigue </symptom>."",
+  ""step2_analysis"": {
+    ""label"": ""SYMPTOM PRESENT IN PATIENT"",
+    ""reasoning"": ""The sentence explicitly states that the patient 'developed' fatigue 'over the past week', indicating a recent past experience of the symptom.""
+  },
+  ""summary"": ""The patient recently developed fatigue over the past week.""
+}
+```"
+6,R003,Pruritus,"History of renal cell carcinoma on combination nivolumab and ipilimumab. Reports <symptom> prurit </symptom>ic rash over trunk and extremities, started 5 days ago. No shortness of breath.","```json
+{
+  ""step1_extracted_symptom"": ""prurit"",
+  ""step1_complete_sentence"": ""Reports <symptom> prurit </symptom>ic rash over trunk and extremities, started 5 days ago."",
+  ""step2_analysis"": {
+    ""label"": ""SYMPTOM PRESENT IN PATIENT"",
+    ""reasoning"": ""The sentence explicitly states that the patient reports a 'pruritic rash', indicating the presence of this symptom in the patient. The phrase'started 5 days ago' confirms a recent onset.""
+  },
+  ""summary"": ""The symptom 'pruritic rash' is present in the patient, as reported by the patient with a recent onset.""
+}
+```"
+7,R003,Rash,"History of renal cell carcinoma on combination nivolumab and ipilimumab. Reports pruritic <symptom> Rash </symptom> over trunk and extremities, started 5 days ago. No shortness of breath.","```json
+{
+  ""step1_extracted_symptom"": ""Rash"",
+  ""step1_complete_sentence"": ""Reports pruritic <symptom> Rash </symptom> over trunk and extremities, started 5 days ago."",
+  ""step2_analysis"": {
+    ""label"": ""SYMPTOM PRESENT IN PATIENT"",
+    ""reasoning"": ""The sentence explicitly states that the patient 'Reports' having a 'Rash' which'started 5 days ago'. This indicates the patient currently or recently has the symptom.""
+  },
+  ""summary"": ""The symptom 'Rash' is present in the patient, as reported by the patient and noted to have started recently.""
+}
+```"
+8,R003,Shortness of Breath,"History of renal cell carcinoma on combination nivolumab and ipilimumab. Reports pruritic rash over trunk and extremities, started 5 days ago. No <symptom> shortness of breath </symptom>.","```json
+{
+  ""step1_extracted_symptom"": ""shortness of breath"",
+  ""step1_complete_sentence"": ""No shortness of breath."",
+  ""step2_analysis"": {
+    ""label"": ""NO CLEAR EVIDENCE OF SYMPTOM IN PATIENT"",
+    ""reasoning"": ""The sentence explicitly negates the presence of the symptom'shortness of breath' with the word 'No'. This falls under the 'Explicit Negation' category.""
+  },
+  ""summary"": ""The symptom'shortness of breath' is explicitly denied by the patient.""
+}
+```"
+9,R006,Arthralgia,"Melanoma patient on pembrolizumab reports no new symptoms. Denies diarrhea, rash, or <symptom> joint pain </symptom>. Physical exam normal.","<unused94>thought
+The user wants me to analyze a clinical note and extract a specific symptom, then determine if the patient currently has or previously had that symptom based on the provided text.
+
+**Step 1: Extract the Symptom**
+- The symptom is marked with `<symptom>...</symptom>`.
+- The text within the tags is ""joint pain"".
+- The sentence containing the symptom is: ""Denies diarrhea, rash, or <symptom> joint pain </symptom>.""
+
+**Step 2: Label the Symptom**
+- The sentence is ""Denies diarrhea, rash, or <symptom> joint pain </symptom>.""
+- The word ""Denies"" indicates that the patient does **not** have the symptom.
+- This falls under the category of **Explicit Negation**.
+- Therefore, the label should be **NO CLEAR EVIDENCE OF SYMPTOM IN PATIENT**.
+
+**Output Format:**
+- `step1_extracted_symptom`: ""joint pain""
+- `step1_complete_sentence`: ""Denies diarrhea, rash, or <symptom> joint pain </symptom>.""
+- `step2_analysis`:
+    - `label`: ""NO CLEAR EVIDENCE OF SYMPTOM IN PATIENT""
+    - `reasoning`: ""The sentence explicitly states that the patient 'Denies' joint pain, indicating the patient does not have this symptom.""
+- `summary`: ""The patient denies having joint pain.""<unused95>```json
+{
+  ""step1_extracted_symptom"": ""joint pain"",
+  ""step1_complete_sentence"": ""Denies diarrhea, rash, or <symptom> joint pain </symptom>."",
+  ""step2_analysis"": {
+    ""label"": ""NO CLEAR EVIDENCE OF SYMPTOM IN PATIENT"",
+    ""reasoning"": ""The sentence explicitly states that the patient 'Denies' joint pain, indicating the patient does not have this symptom. This falls under the category of Explicit Negation.""
+  },
+  ""summary"": ""The patient denies having joint pain.""
+}
+```"
+10,R006,Diarrhea,"Melanoma patient on pembrolizumab reports no new symptoms. Denies <symptom> diarrhea </symptom>, rash, or joint pain. Physical exam normal.","<unused94>thought
+The user wants me to analyze a clinical note snippet and extract a specific symptom, then determine if the symptom is present in the patient or not.
+
+**Step 1: Extract Symptom**
+- The note contains `<symptom> diarrhea </symptom>`.
+- The sentence containing this symptom is: ""Denies <symptom> diarrhea </symptom>, rash, or joint pain.""
+
+**Step 2: Label Symptom**
+- The sentence starts with ""Denies"", which is explicit negation.
+- The patient explicitly states they do *not* have diarrhea.
+- Therefore, the symptom is not present in the patient.
+- This falls under the ""Explicit Negation"" category for ""NO CLEAR EVIDENCE OF SYMPTOM IN PATIENT"".
+
+**Output Format:**
+- I need to construct a JSON object with the required fields: `step1_extracted_symptom`, `step1_complete_sentence`, `step2_analysis` (containing `label` and `reasoning`), and `summary`.<unused95>```json
+{
+  ""step1_extracted_symptom"": ""diarrhea"",
+  ""step1_complete_sentence"": ""Denies <symptom> diarrhea </symptom>, rash, or joint pain."",
+  ""step2_analysis"": {
+    ""label"": ""NO CLEAR EVIDENCE OF SYMPTOM IN PATIENT"",
+    ""reasoning"": ""The sentence explicitly states the patient 'Denies' the symptom, indicating the absence of diarrhea in this patient. This falls under the explicit negation category.""
+  },
+  ""summary"": ""The patient explicitly denies having diarrhea.""
+}
+```"
+11,R006,Rash,"Melanoma patient on pembrolizumab reports no new symptoms. Denies diarrhea, <symptom> Rash </symptom>, or joint pain. Physical exam normal.","```json
+{
+  ""step1_extracted_symptom"": ""Rash"",
+  ""step1_complete_sentence"": ""Denies diarrhea, <symptom> Rash </symptom>, or joint pain."",
+  ""step2_analysis"": {
+    ""label"": ""NO CLEAR EVIDENCE OF SYMPTOM IN PATIENT"",
+    ""reasoning"": ""The sentence explicitly states that the patient 'Denies Rash', indicating the absence of this symptom in the patient. This falls under the 'Explicit Negation' category.""
+  },
+  ""summary"": ""The symptom 'Rash' is explicitly denied by the patient, indicating it is not present.""
+}
+```"
+12,R007,Arthritis,Stage IV small cell lung cancer patient receiving nivolumab. Developed new poly<symptom> Arthritis </symptom> and morning stiffness over past 2 weeks. ESR elevated. Rheumatology consult planned.,"```json
+{
+  ""step1_extracted_symptom"": ""Arthritis"",
+  ""step1_complete_sentence"": ""Developed new poly<symptom> Arthritis </symptom> and morning stiffness over past 2 weeks."",
+  ""step2_analysis"": {
+    ""label"": ""SYMPTOM PRESENT IN PATIENT"",
+    ""reasoning"": ""The sentence explicitly states that the patient 'Developed new poly Arthritis', indicating that the patient currently has this symptom. The phrase 'Developed...over past 2 weeks' signifies a recent onset and presence of the symptom.""
+  },
+  ""summary"": ""The symptom 'Arthritis' is present in the patient, as the note indicates they recently developed it.""
+}
+```"
+13,R007,Rheumatology,Stage IV small cell lung cancer patient receiving nivolumab. Developed new polyarthritis and morning stiffness over past 2 weeks. ESR elevated. <symptom> RHEUMATOLOGY </symptom> consult planned.,"<unused94>thought
+The user wants me to analyze a clinical note snippet to determine if the symptom mentioned is present in the patient.
+
+**Step 1: Extract the Symptom**
+The symptom is enclosed in `<symptom>...</symptom>` tags.
+The exact text within the tags is ""RHEUMATOLOGY"".
+The sentence containing the tags is: ""<symptom> RHEUMATOLOGY </symptom> consult planned.""
+
+**Step 2: Label the Symptom**
+The label needs to be either ""SYMPTOM PRESENT IN PATIENT"" or ""NO CLEAR EVIDENCE OF SYMPTOM IN PATIENT"".
+The sentence indicates a plan to consult a specialist, ""RHEUMATOLOGY"". This is not a symptom the patient is experiencing. It's a plan for further care.
+Therefore, it doesn't fit the criteria for ""SYMPTOM PRESENT IN PATIENT"".
+It also doesn't fit the criteria for ""NO CLEAR EVIDENCE OF SYMPTOM IN PATIENT"" because the sentence doesn't explicitly deny, mention potential side effects, ask about, or describe the patient having the symptom. It's a plan for consultation.
+However, the task asks to label the *symptom* within the tag. ""RHEUMATOLOGY"" is not a symptom; it's a medical specialty or a consultation plan. The sentence mentions ""polyarthritis"" and ""morning stiffness"" as symptoms the patient has, but the tag is around ""RHEUMATOLOGY"".
+Let's re-read the instructions carefully. The task is to extract the *symptom* marked. The text inside the tags is ""RHEUMATOLOGY"". This is not a symptom. It's a plan.
+The instructions state: ""Extract the exact word or phrase marked inside `<symptom>...</symptom>`.""
+Then, I need to label *that specific phrase* based on the rules.
+The rules define SYMPTOM PRESENT IN PATIENT based on patient reporting or experiencing the symptom.
+The rules define NO CLEAR EVIDENCE OF SYMPTOM IN PATIENT based on negation, hypothetical, medication side effects, screening, family history, or general lists.
+The phrase ""RHEUMATOLOGY"" doesn't fit either category. It's not a symptom experienced by the patient, nor does it fall into any of the categories for ""NO CLEAR EVIDENCE"". It's a plan for consultation related to the patient's symptoms (polyarthritis, morning stiffness).
+Perhaps the task intends for me to label the *underlying condition* that would require a rheumatology consult, which are the polyarthritis and morning stiffness mentioned earlier in the note. However, the instructions are very specific: ""Extract the exact word or phrase marked inside `<symptom>...</symptom>`"". The word marked is ""RHEUMATOLOGY"".
+If I treat ""RHEUMATOLOGY"" as the symptom, it's clearly not something the patient *has*. It's a plan. This fits the ""NO CLEAR EVIDENCE OF SYMPTOM IN PATIENT"" category, specifically because it's not describing the patient's state. It's a plan or action.
+Let's check the examples again. The examples are about symptoms like ""nausea"" and ""fatigue"". ""RHEUMATOLOGY"" is fundamentally different.
+Given the strict instructions to extract the exact phrase within the tags and label *that*, I will label ""RHEUMATOLOGY"" as ""NO CLEAR EVIDENCE OF SYMPTOM IN PATIENT"" because it is not a symptom the patient has or is described as having. It represents a plan for consultation.
+
+**Step 1:** Extract ""RHEUMATOLOGY"". Sentence is ""<symptom> RHEUMATOLOGY </symptom> consult planned.""
+**Step 2:** Label ""RHEUMATOLOGY"".
+Reasoning: The sentence indicates a plan for a ""RHEUMATOLOGY"" consult. This is not a symptom experienced by the patient. It represents a plan for further medical care, not the presence of a symptom itself. Therefore, there is no clear evidence of the *symptom* ""RHEUMATOLOGY"" being present in the patient based on this sentence.
+
+```json
+{
+  ""step1_extracted_symptom"": ""RHEUMATOLOGY"",
+  ""step1_complete_sentence"": ""<symptom> RHEUMATOLOGY </symptom> consult planned."",
+  ""step2_analysis"": {
+    ""label"": ""NO CLEAR EVIDENCE OF SYMPTOM IN PATIENT"",
+    ""reasoning"": ""The sentence indicates a plan for a Rheumatology consultation. 'RHEUMATOLOGY' itself is not a symptom experienced by the patient; it refers to the medical specialty or the planned consultation. Therefore, there is no evidence of this specific term being a symptom present in the patient based on this sentence.""
+  },
+  ""summary"": ""The term 'RHEUMATOLOGY' is mentioned as a planned consultation, not a symptom present in the patient.""
+}
+```<unused95>```json
+{
+  ""step1_extracted_symptom"": ""RHEUMATOLOGY"",
+  ""step1_complete_sentence"": ""<symptom> RHEUMATOLOGY </symptom> consult planned."",
+  ""step2_analysis"": {
+    ""label"": ""NO CLEAR EVIDENCE OF SYMPTOM IN PATIENT"",
+    ""reasoning"": ""The sentence indicates a plan for a Rheumatology consultation. 'RHEUMATOLOGY' itself is not a symptom experienced by the patient; it refers to the medical specialty or the planned consultation. Therefore, there is no evidence of this specific term being a symptom present in the patient based on this sentence.""
+  },
+  ""summary"": ""The term 'RHEUMATOLOGY' is mentioned as a planned consultation, not a symptom present in the patient.""
+}
+```"
+14,R007,Stiffness,Stage IV small cell lung cancer patient receiving nivolumab. Developed new polyarthritis and morning <symptom> stiffness </symptom> over past 2 weeks. ESR elevated. Rheumatology consult planned.,"```json
+{
+  ""step1_extracted_symptom"": ""stiffness"",
+  ""step1_complete_sentence"": ""Developed new polyarthritis and morning <symptom> stiffness </symptom> over past 2 weeks."",
+  ""step2_analysis"": {
+    ""label"": ""SYMPTOM PRESENT IN PATIENT"",
+    ""reasoning"": ""The sentence explicitly states that the patient 'Developed new polyarthritis and morning stiffness over past 2 weeks', indicating that the symptom has occurred and is present in the patient.""
+  },
+  ""summary"": ""The symptom'stiffness' is present in the patient, having developed over the past two weeks.""
+}
+```"
+15,R008,Adrenal Insufficiency,"Renal cell carcinoma on ipilimumab monotherapy. Presented with severe fatigue, dizziness, and hypotension. Morning cortisol low, ACTH low. Suspect secondary <symptom> Adrenal insufficiency </symptom> due to hypophysitis.","```json
+{
+  ""step1_extracted_symptom"": ""Adrenal insufficiency"",
+  ""step1_complete_sentence"": ""Suspect secondary <symptom> Adrenal insufficiency </symptom> due to hypophysitis."",
+  ""step2_analysis"": {
+    ""label"": ""NO CLEAR EVIDENCE OF SYMPTOM IN PATIENT"",
+    ""reasoning"": ""The sentence indicates a suspicion or potential diagnosis ('Suspect secondary Adrenal insufficiency') rather than confirming the patient currently has or previously had the symptom. It describes a suspected condition based on other findings, not a confirmed symptom present in the patient.""
+  },
+  ""summary"": ""The symptom 'Adrenal insufficiency' is mentioned as a suspected diagnosis, not a confirmed symptom present in the patient.""
+}
+```"
+16,R008,Dizziness,"Renal cell carcinoma on ipilimumab monotherapy. Presented with severe fatigue, <symptom> Dizziness </symptom>, and hypotension. Morning cortisol low, ACTH low. Suspect secondary adrenal insufficiency due to hypophysitis.","```json
+{
+  ""step1_extracted_symptom"": ""Dizziness"",
+  ""step1_complete_sentence"": ""Renal cell carcinoma on ipilimumab monotherapy. Presented with severe fatigue, <symptom> Dizziness </symptom>, and hypotension."",
+  ""step2_analysis"": {
+    ""label"": ""SYMPTOM PRESENT IN PATIENT"",
+    ""reasoning"": ""The sentence explicitly states that the patient presented with dizziness, indicating the symptom is currently present in the patient.""
+  },
+  ""summary"": ""The symptom 'Dizziness' is present in the patient as they presented with it.""
+}
+```"
+17,R008,Fatigue,"Renal cell carcinoma on ipilimumab monotherapy. Presented with severe <symptom> Fatigue </symptom>, dizziness, and hypotension. Morning cortisol low, ACTH low. Suspect secondary adrenal insufficiency due to hypophysitis.","<unused94>thought
+The user wants me to extract a symptom from a clinical note and determine if it's present in the patient.
+
+**Step 1: Extract Symptom**
+The symptom is marked as `<symptom> Fatigue </symptom>`.
+The sentence containing this symptom is: ""Renal cell carcinoma on ipilimumab monotherapy. Presented with severe <symptom> Fatigue </symptom>, dizziness, and hypotension.""
+
+**Step 2: Label the Symptom**
+The sentence states that the patient ""Presented with severe Fatigue"". This clearly indicates that the patient currently has or recently had this symptom. It falls under the ""SYMPTOM PRESENT IN PATIENT"" category.
+
+**Reasoning:** The sentence uses the phrase ""Presented with severe Fatigue"", which explicitly states that the patient experienced this symptom. This confirms the presence of the symptom in the patient.
+
+**Summary:** The patient presented with severe fatigue.<unused95>```json
+{
+  ""step1_extracted_symptom"": ""Fatigue"",
+  ""step1_complete_sentence"": ""Renal cell carcinoma on ipilimumab monotherapy. Presented with severe <symptom> Fatigue </symptom>, dizziness, and hypotension."",
+  ""step2_analysis"": {
+    ""label"": ""SYMPTOM PRESENT IN PATIENT"",
+    ""reasoning"": ""The sentence explicitly states that the patient 'Presented with severe Fatigue', indicating that the patient has experienced this symptom.""
+  },
+  ""summary"": ""The symptom 'Fatigue' is present in the patient as they presented with it.""
+}
+```"
+18,R009,Erythema,"Metastatic melanoma on atezolizumab. Mild <symptom> erythema </symptom>tous rash on upper chest, responding to topical steroids. No GI or respiratory symptoms.","```json
+{
+  ""step1_extracted_symptom"": ""erythema"",
+  ""step1_complete_sentence"": ""Mild erythema tous rash on upper chest, responding to topical steroids."",
+  ""step2_analysis"": {
+    ""label"": ""SYMPTOM PRESENT IN PATIENT"",
+    ""reasoning"": ""The sentence describes a physical finding ('erythema tous rash') on the patient's upper chest, indicating the patient currently has this symptom.""
+  },
+  ""summary"": ""The symptom 'erythema' is present in the patient, described as part of a rash on their upper chest.""
+}
+```"
+19,R009,Rash,"Metastatic melanoma on atezolizumab. Mild erythematous <symptom> Rash </symptom> on upper chest, responding to topical steroids. No GI or respiratory symptoms.","<unused94>thought
+The user wants me to analyze a clinical note and extract a specific symptom.
+
+**Step 1: Extract the Symptom**
+- The note contains `<symptom> Rash </symptom>`.
+- The sentence containing the symptom is: ""Mild erythematous <symptom> Rash </symptom> on upper chest, responding to topical steroids.""
+
+**Step 2: Label the Symptom**
+- The sentence states the patient has a ""Mild erythematous Rash"".
+- This is a description of a symptom the patient currently has (""Mild erythematous Rash on upper chest"").
+- It fits the criteria for **SYMPTOM PRESENT IN PATIENT**.
+
+**Reasoning:** The sentence describes a physical finding (mild erythematous rash) observed in the patient, indicating the symptom is present. It doesn't negate, hypothesize, list side effects generally, or mention family history.
+
+**Summary:** The patient has a mild erythematous rash on their upper chest.
+
+**Output Format:**
+I will construct the JSON output with the extracted symptom, the full sentence, the label, the reasoning, and the summary.<unused95>```json
+{
+  ""step1_extracted_symptom"": ""Rash"",
+  ""step1_complete_sentence"": ""Mild erythematous <symptom> Rash </symptom> on upper chest, responding to topical steroids."",
+  ""step2_analysis"": {
+    ""label"": ""SYMPTOM PRESENT IN PATIENT"",
+    ""reasoning"": ""The sentence describes a physical finding observed in the patient ('Mild erythematous Rash on upper chest'), indicating the symptom is currently present.""
+  },
+  ""summary"": ""The patient is currently experiencing a mild erythematous rash on their upper chest.""
+}
+```"

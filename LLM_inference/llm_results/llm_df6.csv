@@ -1,0 +1,625 @@
+,report_id,standard_symptom,symptom_adjacent,output
+0,R001,Diarrhea,"Patient with metastatic melanoma currently receiving nivolumab every 2 weeks. No new symptoms reported. Physical exam unremarkable. No evidence of rash, <symptom> diarrhea </symptom>, or fatigue.","<unused94>thought
+The user wants me to extract a symptom, identify a valid time expression related to it, and normalize the time.
+
+**Step 1: Extract Symptom**
+- The symptom is marked as `<symptom> diarrhea </symptom>`.
+- The exact word/phrase is ""diarrhea"".
+- The full sentence is ""No evidence of rash, <symptom> diarrhea </symptom>, or fatigue.""
+
+**Step 2: Identify Valid Time Expression**
+- The sentence containing the symptom is ""No evidence of rash, diarrhea, or fatigue.""
+- This sentence does not contain any calendar time expression (Year, Month, Day).
+- Therefore, `time_found` is false.
+
+**Step 3: Normalize Time**
+- Since `time_found` is false, `normalized_time` will be ""None"".
+
+**Step 4: Output Format**
+- Assemble the results into the specified JSON format.<unused95>```json
+{
+  ""step1_extracted_symptom"": ""diarrhea"",
+  ""step1_complete_sentence"": ""No evidence of rash, <symptom> diarrhea </symptom>, or fatigue."",
+  ""time_found"": false,
+  ""normalized_time"": ""None"",
+  ""evidence_sentence"": ""None""
+}
+```"
+1,R001,Fatigue,"Patient with metastatic melanoma currently receiving nivolumab every 2 weeks. No new symptoms reported. Physical exam unremarkable. No evidence of rash, diarrhea, or <symptom> Fatigue </symptom>.","<unused94>thought
+The user wants me to extract a symptom, identify if a valid time expression is associated with it, and normalize the time.
+
+**Step 1: Extract Symptom**
+- The symptom is marked as `<symptom> Fatigue </symptom>`.
+- The exact word/phrase is ""Fatigue"".
+- The sentence containing the symptom is ""No evidence of rash, diarrhea, or <symptom> Fatigue </symptom>."".
+
+**Step 2: Identify Valid Time Expression**
+- The sentence containing the symptom is ""No evidence of rash, diarrhea, or <symptom> Fatigue </symptom>."".
+- This sentence does not contain any calendar time expressions (Year, Month, Day).
+- Therefore, `time_found` is false.
+
+**Step 3: Normalize Time**
+- Since `time_found` is false, the `normalized_time` will be None.
+
+**Step 4: Output Format**
+- `step1_extracted_symptom`: ""Fatigue""
+- `step1_complete_sentence`: ""No evidence of rash, diarrhea, or <symptom> Fatigue </symptom>.""
+- `time_found`: false
+- `normalized_time`: None
+- `evidence_sentence`: None (since no time was found)<unused95>```json
+{
+  ""step1_extracted_symptom"": ""Fatigue"",
+  ""step1_complete_sentence"": ""No evidence of rash, diarrhea, or <symptom> Fatigue </symptom>."",
+  ""time_found"": false,
+  ""normalized_time"": ""None"",
+  ""evidence_sentence"": ""None""
+}
+```"
+2,R001,Rash,"Patient with metastatic melanoma currently receiving nivolumab every 2 weeks. No new symptoms reported. Physical exam unremarkable. No evidence of <symptom> Rash </symptom>, diarrhea, or fatigue.","<unused94>thought
+The user wants me to extract a symptom and find a valid time expression associated with it from the provided clinical note.
+
+**Step 1: Extract Symptom**
+- The symptom is marked as `<symptom> Rash </symptom>`.
+- The exact word/phrase is ""Rash"".
+- The full sentence containing the symptom is ""No evidence of Rash, diarrhea, or fatigue.""
+
+**Step 2: Identify Valid Time Expression**
+- The sentence containing the symptom is ""No evidence of Rash, diarrhea, or fatigue.""
+- This sentence does not contain any calendar time expressions (year, month, day).
+- Therefore, `time_found` is false.
+
+**Step 3: Time Normalization**
+- Since no valid time expression was found, the normalized time is ""None"".
+
+**Step 4: Output Format**
+- Assemble the results into the specified JSON format.<unused95>```json
+{
+  ""step1_extracted_symptom"": ""Rash"",
+  ""step1_complete_sentence"": ""No evidence of Rash, diarrhea, or fatigue."",
+  ""time_found"": false,
+  ""normalized_time"": ""None"",
+  ""evidence_sentence"": ""None""
+}
+```"
+3,R002,Colitis,"The patient has stage IV non-small cell lung cancer on pembrolizumab monotherapy. Over the past week, developed mild diarrhea and fatigue. Consider immune-mediated <symptom> colitis </symptom>; stool studies pending.","<unused94>thought
+The user wants me to extract a symptom, identify a valid time expression for it, and normalize the time.
+
+**Step 1: Extract Symptom**
+- The symptom is marked as `<symptom> colitis </symptom>`.
+- The exact word/phrase is ""colitis"".
+- The full sentence is ""Consider immune-mediated colitis ; stool studies pending.""
+
+**Step 2: Identify Valid Time Expression**
+- The sentence containing the symptom is ""Consider immune-mediated colitis ; stool studies pending.""
+- Does this sentence or any clearly linked nearby sentence contain a valid time expression (Year, Month, Day)? No.
+- The nearby sentence ""Over the past week, developed mild diarrhea and fatigue."" mentions a time, but it's ""past week"", which is a vague time expression.
+- Therefore, no valid time expression is found for the symptom ""colitis"".
+
+**Step 3: Normalize Time**
+- Since no valid time expression was found, I will return ""None"" for the normalized time.
+
+**Output Format**
+- `step1_extracted_symptom`: ""colitis""
+- `step1_complete_sentence`: ""Consider immune-mediated colitis ; stool studies pending.""
+- `time_found`: false
+- `normalized_time`: ""None""
+- `evidence_sentence`: None<unused95>```json
+{
+  ""step1_extracted_symptom"": ""colitis"",
+  ""step1_complete_sentence"": ""Consider immune-mediated colitis ; stool studies pending."",
+  ""time_found"": false,
+  ""normalized_time"": ""None"",
+  ""evidence_sentence"": None
+}
+```"
+4,R002,Diarrhea,"The patient has stage IV non-small cell lung cancer on pembrolizumab monotherapy. Over the past week, developed mild <symptom> diarrhea </symptom> and fatigue. Consider immune-mediated colitis; stool studies pending.","<unused94>thought
+The user wants me to extract a symptom, identify a valid time expression related to it, and normalize the time.
+
+**Step 1: Extract Symptom**
+- The symptom is marked as `<symptom> diarrhea </symptom>`.
+- The exact word/phrase is ""diarrhea"".
+- The full sentence is ""Over the past week, developed mild diarrhea and fatigue.""
+
+**Step 2: Identify Valid Time Expression**
+- The sentence containing the symptom is ""Over the past week, developed mild diarrhea and fatigue.""
+- The time expression is ""Over the past week"".
+- Is ""Over the past week"" a valid time expression according to the rules?
+    - Valid examples include years, months, days.
+    - Invalid examples include ""yesterday"", ""last week"", ""recently"", ""today"", ""this month"", ""two weeks ago"", ""a few days ago"", ""prior to admission"", ""in the past"".
+- ""Over the past week"" falls into the ""invalid"" category.
+- Therefore, no valid time expression was found.
+
+**Step 3: Normalize Time**
+- Since no valid time expression was found, the normalized time will be ""None"".
+
+**Step 4: Construct Output**
+- `step1_extracted_symptom`: ""diarrhea""
+- `step1_complete_sentence`: ""Over the past week, developed mild diarrhea and fatigue.""
+- `time_found`: false
+- `normalized_time`: ""None""
+- `evidence_sentence`: ""None""<unused95>```json
+{
+  ""step1_extracted_symptom"": ""diarrhea"",
+  ""step1_complete_sentence"": ""Over the past week, developed mild diarrhea and fatigue."",
+  ""time_found"": false,
+  ""normalized_time"": ""None"",
+  ""evidence_sentence"": ""None""
+}
+```"
+5,R002,Fatigue,"The patient has stage IV non-small cell lung cancer on pembrolizumab monotherapy. Over the past week, developed mild diarrhea and <symptom> Fatigue </symptom>. Consider immune-mediated colitis; stool studies pending.","<unused94>thought
+The user wants me to extract a symptom and identify a valid time expression for it from the provided clinical note.
+
+**Step 1: Extract Symptom**
+- The symptom is marked as `<symptom> Fatigue </symptom>`.
+- The exact word/phrase is ""Fatigue"".
+- The full sentence is ""Over the past week, developed mild diarrhea and <symptom> Fatigue </symptom>."".
+
+**Step 2: Identify Valid Time Expression**
+- The sentence containing the symptom is ""Over the past week, developed mild diarrhea and <symptom> Fatigue </symptom>."".
+- The time expression in this sentence is ""Over the past week"".
+- Is ""Over the past week"" a valid time expression according to the rules?
+    - Does it contain a year, month, or day? No.
+    - Is it a vague time expression like ""yesterday"", ""last week"", ""recently"", etc.? Yes, ""past week"" is considered vague.
+- Therefore, no valid time expression is found. `time_found = false`.
+
+**Step 3: Normalize Time**
+- Since `time_found` is false, `normalized_time` will be None.
+
+**Step 4: Evidence Sentence**
+- Since no valid time expression was found, `evidence_sentence` will be None.
+
+**Output Construction**
+- `step1_extracted_symptom`: ""Fatigue""
+- `step1_complete_sentence`: ""Over the past week, developed mild diarrhea and <symptom> Fatigue </symptom>.""
+- `time_found`: false
+- `normalized_time`: None
+- `evidence_sentence`: None<unused95>```json
+{
+  ""step1_extracted_symptom"": ""Fatigue"",
+  ""step1_complete_sentence"": ""Over the past week, developed mild diarrhea and <symptom> Fatigue </symptom>."",
+  ""time_found"": false,
+  ""normalized_time"": None,
+  ""evidence_sentence"": None
+}
+```"
+6,R003,Pruritus,"History of renal cell carcinoma on combination nivolumab and ipilimumab. Reports <symptom> prurit </symptom>ic rash over trunk and extremities, started 5 days ago. No shortness of breath.","<unused94>thought
+The user wants me to extract a symptom, identify a valid time expression associated with it, and normalize the time.
+
+**Step 1: Extract Symptom**
+- The symptom is marked as `<symptom> prurit </symptom>ic rash over trunk and extremities`.
+- The exact phrase is `prurit ic rash over trunk and extremities`.
+- The full sentence is `Reports <symptom> prurit </symptom>ic rash over trunk and extremities, started 5 days ago.`.
+
+**Step 2: Identify Valid Time Expression**
+- The sentence containing the symptom is `Reports prurit ic rash over trunk and extremities, started 5 days ago.`.
+- The time expression is `5 days ago`.
+- This is a vague time expression (""days ago"") and does not contain a year, month, or day.
+- Therefore, `time_found` is `false`.
+
+**Step 3: Normalize Time**
+- Since `time_found` is false, `normalized_time` is `None`.
+
+**Step 4: Evidence Sentence**
+- Since `time_found` is false, `evidence_sentence` is `None`.
+
+**Final Output:**
+```json
+{
+  ""step1_extracted_symptom"": ""prurit ic rash over trunk and extremities"",
+  ""step1_complete_sentence"": ""Reports <symptom> prurit </symptom>ic rash over trunk and extremities, started 5 days ago."",
+  ""time_found"": false,
+  ""normalized_time"": ""None"",
+  ""evidence_sentence"": ""None""
+}
+```<unused95>```json
+{
+  ""step1_extracted_symptom"": ""prurit ic rash over trunk and extremities"",
+  ""step1_complete_sentence"": ""Reports <symptom> prurit </symptom>ic rash over trunk and extremities, started 5 days ago."",
+  ""time_found"": false,
+  ""normalized_time"": ""None"",
+  ""evidence_sentence"": ""None""
+}
+```"
+7,R003,Rash,"History of renal cell carcinoma on combination nivolumab and ipilimumab. Reports pruritic <symptom> Rash </symptom> over trunk and extremities, started 5 days ago. No shortness of breath.","<unused94>thought
+The user wants me to extract a specific symptom from a clinical note and identify a valid time expression associated with it.
+
+**Step 1: Extract Symptom**
+- The symptom is marked as `<symptom> Rash </symptom>`.
+- The exact word/phrase is ""Rash"".
+- The full sentence containing the symptom is ""Reports pruritic <symptom> Rash </symptom> over trunk and extremities, started 5 days ago.""
+
+**Step 2: Identify Valid Time Expression**
+- The sentence containing the symptom is: ""Reports pruritic Rash over trunk and extremities, started 5 days ago.""
+- The time expression is ""5 days ago"".
+- Is ""5 days ago"" a valid time expression? No, it's vague. It doesn't contain a year, month, or day.
+- Therefore, `time_found` is false.
+
+**Step 3: Normalize Time**
+- Since `time_found` is false, `normalized_time` should be ""None"".
+
+**Step 4: Output Format**
+- `step1_extracted_symptom`: ""Rash""
+- `step1_complete_sentence`: ""Reports pruritic Rash over trunk and extremities, started 5 days ago.""
+- `time_found`: false
+- `normalized_time`: ""None""
+- `evidence_sentence`: ""None"" (as no valid time was found)
+
+```json
+{
+  ""step1_extracted_symptom"": ""Rash"",
+  ""step1_complete_sentence"": ""Reports pruritic Rash over trunk and extremities, started 5 days ago."",
+  ""time_found"": false,
+  ""normalized_time"": ""None"",
+  ""evidence_sentence"": ""None""
+}
+```<unused95>```json
+{
+  ""step1_extracted_symptom"": ""Rash"",
+  ""step1_complete_sentence"": ""Reports pruritic Rash over trunk and extremities, started 5 days ago."",
+  ""time_found"": false,
+  ""normalized_time"": ""None"",
+  ""evidence_sentence"": ""None""
+}
+```"
+8,R003,Shortness of Breath,"History of renal cell carcinoma on combination nivolumab and ipilimumab. Reports pruritic rash over trunk and extremities, started 5 days ago. No <symptom> shortness of breath </symptom>.","<unused94>thought
+The user wants me to extract a specific symptom and its associated time expression from a clinical note.
+
+**Step 1: Extract Symptom**
+- The symptom is marked as `<symptom> shortness of breath </symptom>`.
+- The exact word/phrase is ""shortness of breath"".
+- The full sentence is ""No shortness of breath."".
+
+**Step 2: Identify Valid Time Expression**
+- The sentence ""No shortness of breath."" does not contain a time expression.
+- The preceding sentence mentions ""started 5 days ago"", but this refers to the ""pruritic rash"", not ""shortness of breath"".
+- Therefore, no valid time expression is found for the symptom ""shortness of breath"".
+
+**Step 3: Normalize Time**
+- Since no valid time expression was found, `time_found` is false.
+- `normalized_time` will be None.
+- `evidence_sentence` will be None.
+
+**Output Generation**
+- `step1_extracted_symptom`: ""shortness of breath""
+- `step1_complete_sentence`: ""No shortness of breath.""
+- `time_found`: false
+- `normalized_time`: None
+- `evidence_sentence`: None<unused95>```json
+{
+  ""step1_extracted_symptom"": ""shortness of breath"",
+  ""step1_complete_sentence"": ""No shortness of breath."",
+  ""time_found"": false,
+  ""normalized_time"": None,
+  ""evidence_sentence"": None
+}
+```"
+9,R006,Arthralgia,"Melanoma patient on pembrolizumab reports no new symptoms. Denies diarrhea, rash, or <symptom> joint pain </symptom>. Physical exam normal.","<unused94>thought
+The user wants me to extract a symptom and find a valid time expression associated with it.
+
+**Step 1: Extract Symptom**
+- The symptom is marked as `<symptom> joint pain </symptom>`.
+- The exact symptom is ""joint pain"".
+- The full sentence is ""Denies diarrhea, rash, or <symptom> joint pain </symptom>."".
+
+**Step 2: Identify Valid Time Expression**
+- The sentence ""Denies diarrhea, rash, or joint pain."" does not contain any calendar time expression (year, month, day).
+- Therefore, no valid time expression is found.
+
+**Step 3: Time Normalization**
+- Since no valid time expression was found, I will output None.
+
+**Step 4: Output Format**
+- `step1_extracted_symptom`: ""joint pain""
+- `step1_complete_sentence`: ""Denies diarrhea, rash, or <symptom> joint pain </symptom>.""
+- `time_found`: false
+- `normalized_time`: None
+- `evidence_sentence`: None<unused95>```json
+{
+  ""step1_extracted_symptom"": ""joint pain"",
+  ""step1_complete_sentence"": ""Denies diarrhea, rash, or <symptom> joint pain </symptom>."",
+  ""time_found"": false,
+  ""normalized_time"": ""None"",
+  ""evidence_sentence"": ""None""
+}
+```"
+10,R006,Diarrhea,"Melanoma patient on pembrolizumab reports no new symptoms. Denies <symptom> diarrhea </symptom>, rash, or joint pain. Physical exam normal.","<unused94>thought
+The user wants me to analyze a clinical note to extract a specific symptom and identify a valid time expression associated with it.
+
+**Step 1: Extract the Symptom**
+- The symptom is marked as `<symptom> diarrhea </symptom>`.
+- The exact word/phrase is ""diarrhea"".
+- The full sentence containing the symptom is ""Denies diarrhea, rash, or joint pain.""
+
+**Step 2: Identify a Valid Time Expression**
+- The sentence ""Denies diarrhea, rash, or joint pain."" does not contain any specific calendar time expression (Year, Month, Day).
+- The note mentions ""Melanoma patient on pembrolizumab reports no new symptoms"" but this doesn't specify when the lack of symptoms occurred.
+- Therefore, no valid time expression is found.
+
+**Step 3: Normalize Time**
+- Since no valid time expression was found, time_found is false.
+- normalized_time will be ""None"".
+
+**Step 4: Output Format**
+- Combine the extracted symptom, sentence, time_found status, and normalized_time into the required JSON format.<unused95>```json
+{
+  ""step1_extracted_symptom"": ""diarrhea"",
+  ""step1_complete_sentence"": ""Denies diarrhea, rash, or joint pain."",
+  ""time_found"": false,
+  ""normalized_time"": ""None"",
+  ""evidence_sentence"": ""None""
+}
+```"
+11,R006,Rash,"Melanoma patient on pembrolizumab reports no new symptoms. Denies diarrhea, <symptom> Rash </symptom>, or joint pain. Physical exam normal.","<unused94>thought
+The user wants me to extract a symptom, identify a valid time expression related to it, and normalize the time.
+
+**Step 1: Extract Symptom**
+- The symptom is marked as `<symptom> Rash </symptom>`.
+- The exact word/phrase is ""Rash"".
+- The full sentence is ""Denies diarrhea, <symptom> Rash </symptom>, or joint pain.""
+
+**Step 2: Identify Valid Time Expression**
+- The sentence ""Denies diarrhea, Rash, or joint pain."" does not contain a calendar time expression (Year, Month, Day).
+- There are no nearby sentences that link a time expression to the symptom ""Rash"".
+- Therefore, no valid time expression is found.
+
+**Step 3: Time Normalization**
+- Since no valid time expression was found, `time_found` is false.
+- `normalized_time` will be ""None"".
+
+**Output Format**
+- `step1_extracted_symptom`: ""Rash""
+- `step1_complete_sentence`: ""Denies diarrhea, <symptom> Rash </symptom>, or joint pain.""
+- `time_found`: false
+- `normalized_time`: ""None""
+- `evidence_sentence`: ""None""<unused95>```json
+{
+  ""step1_extracted_symptom"": ""Rash"",
+  ""step1_complete_sentence"": ""Denies diarrhea, <symptom> Rash </symptom>, or joint pain."",
+  ""time_found"": false,
+  ""normalized_time"": ""None"",
+  ""evidence_sentence"": ""None""
+}
+```"
+12,R007,Arthritis,Stage IV small cell lung cancer patient receiving nivolumab. Developed new poly<symptom> Arthritis </symptom> and morning stiffness over past 2 weeks. ESR elevated. Rheumatology consult planned.,"<unused94>thought
+The user wants me to extract a symptom, identify a valid time expression, and normalize it.
+
+**Step 1: Extract Symptom**
+- The symptom is marked as `<symptom> Arthritis </symptom>`.
+- The exact word/phrase is ""Arthritis"".
+- The sentence containing the symptom is ""Developed new poly<symptom> Arthritis </symptom> and morning stiffness over past 2 weeks.""
+
+**Step 2: Identify Valid Time Expression**
+- The sentence mentions ""over past 2 weeks"".
+- ""past 2 weeks"" is a vague time expression and does not contain a year, month, or day.
+- Therefore, no valid time expression is found.
+
+**Step 3: Time Normalization**
+- Since no valid time expression was found, the normalized time will be None.
+
+**Output:**
+- `step1_extracted_symptom`: ""Arthritis""
+- `step1_complete_sentence`: ""Developed new poly<symptom> Arthritis </symptom> and morning stiffness over past 2 weeks.""
+- `time_found`: false
+- `normalized_time`: None
+- `evidence_sentence`: None<unused95>```json
+{
+  ""step1_extracted_symptom"": ""Arthritis"",
+  ""step1_complete_sentence"": ""Developed new poly<symptom> Arthritis </symptom> and morning stiffness over past 2 weeks."",
+  ""time_found"": false,
+  ""normalized_time"": None,
+  ""evidence_sentence"": None
+}
+```"
+13,R007,Rheumatology,Stage IV small cell lung cancer patient receiving nivolumab. Developed new polyarthritis and morning stiffness over past 2 weeks. ESR elevated. <symptom> RHEUMATOLOGY </symptom> consult planned.,"<unused94>thought
+The user wants me to extract a symptom, identify a valid time expression associated with it, and normalize the time.
+
+**Step 1: Extract Symptom**
+- The symptom is marked as `<symptom> RHEUMATOLOGY </symptom>`.
+- The exact word/phrase is ""RHEUMATOLOGY"".
+- The sentence containing the symptom is ""RHEUMATOLOGY consult planned.""
+
+**Step 2: Identify Valid Time Expression**
+- The sentence ""RHEUMATOLOGY consult planned."" does not contain a valid time expression (Year, Month, or Day).
+- The previous sentence mentions ""over past 2 weeks"", but this is a vague time expression (""past"", ""weeks ago"") and does not contain a specific Year, Month, or Day.
+- Therefore, no valid time expression is found for the symptom.
+
+**Step 3: Normalize Time**
+- Since no valid time expression was found, `time_found` is false.
+- The `normalized_time` will be ""None"".
+- `evidence_sentence` will be ""None"" as no time expression was found.
+
+**Output:**
+```json
+{
+  ""step1_extracted_symptom"": ""RHEUMATOLOGY"",
+  ""step1_complete_sentence"": ""RHEUMATOLOGY consult planned."",
+  ""time_found"": false,
+  ""normalized_time"": ""None"",
+  ""evidence_sentence"": ""None""
+}
+```<unused95>```json
+{
+  ""step1_extracted_symptom"": ""RHEUMATOLOGY"",
+  ""step1_complete_sentence"": ""RHEUMATOLOGY consult planned."",
+  ""time_found"": false,
+  ""normalized_time"": ""None"",
+  ""evidence_sentence"": ""None""
+}
+```"
+14,R007,Stiffness,Stage IV small cell lung cancer patient receiving nivolumab. Developed new polyarthritis and morning <symptom> stiffness </symptom> over past 2 weeks. ESR elevated. Rheumatology consult planned.,"<unused94>thought
+The user wants me to extract a symptom, identify a valid time expression, and normalize the time.
+
+**Step 1: Extract Symptom**
+- The symptom is marked as `<symptom> stiffness </symptom>`.
+- The exact word/phrase is ""stiffness"".
+- The full sentence is ""Developed new polyarthritis and morning <symptom> stiffness </symptom> over past 2 weeks.""
+
+**Step 2: Identify Valid Time Expression**
+- The sentence containing the symptom is ""Developed new polyarthritis and morning <symptom> stiffness </symptom> over past 2 weeks.""
+- The time expression is ""over past 2 weeks"".
+- This is a vague time expression (relative time) and does not contain a year, month, or day.
+- Therefore, no valid time expression is found.
+
+**Step 3: Time Normalization**
+- Since no valid time expression was found, the normalized time will be None.
+
+**Output:**
+- step1_extracted_symptom: ""stiffness""
+- step1_complete_sentence: ""Developed new polyarthritis and morning <symptom> stiffness </symptom> over past 2 weeks.""
+- time_found: false
+- normalized_time: None
+- evidence_sentence: None<unused95>```json
+{
+  ""step1_extracted_symptom"": ""stiffness"",
+  ""step1_complete_sentence"": ""Developed new polyarthritis and morning <symptom> stiffness </symptom> over past 2 weeks."",
+  ""time_found"": false,
+  ""normalized_time"": None,
+  ""evidence_sentence"": None
+}
+```"
+15,R008,Adrenal Insufficiency,"Renal cell carcinoma on ipilimumab monotherapy. Presented with severe fatigue, dizziness, and hypotension. Morning cortisol low, ACTH low. Suspect secondary <symptom> Adrenal insufficiency </symptom> due to hypophysitis.","<unused94>thought
+The user wants me to extract a symptom, identify a valid time expression, and normalize it based on the provided clinical note.
+
+**Step 1: Extract Symptom**
+- The symptom is marked as `<symptom> Adrenal insufficiency </symptom>`.
+- The exact word/phrase is ""Adrenal insufficiency"".
+- The full sentence containing the symptom is ""Suspect secondary Adrenal insufficiency due to hypophysitis.""
+
+**Step 2: Identify Valid Time Expression**
+- I need to check the sentence ""Suspect secondary Adrenal insufficiency due to hypophysitis."" and nearby sentences for a valid time expression (Year, Month, or Day).
+- The sentence does not contain any calendar time expressions like year, month, or day.
+- Therefore, `time_found` is false.
+
+**Step 3: Time Normalization**
+- Since `time_found` is false, `normalized_time` will be None.
+
+**Step 4: Output Format**
+- Combine the extracted symptom, sentence, time found status, and normalized time into the required JSON format.<unused95>```json
+{
+  ""step1_extracted_symptom"": ""Adrenal insufficiency"",
+  ""step1_complete_sentence"": ""Suspect secondary Adrenal insufficiency due to hypophysitis."",
+  ""time_found"": false,
+  ""normalized_time"": ""None"",
+  ""evidence_sentence"": ""None""
+}
+```"
+16,R008,Dizziness,"Renal cell carcinoma on ipilimumab monotherapy. Presented with severe fatigue, <symptom> Dizziness </symptom>, and hypotension. Morning cortisol low, ACTH low. Suspect secondary adrenal insufficiency due to hypophysitis.","<unused94>thought
+The user wants me to extract a symptom, identify if a valid time expression is associated with it, and normalize the time.
+
+**Step 1: Extract Symptom**
+- The symptom is marked as `<symptom> Dizziness </symptom>`.
+- The exact word/phrase is ""Dizziness"".
+- The full sentence containing the symptom is ""Presented with severe fatigue, <symptom> Dizziness </symptom>, and hypotension.""
+
+**Step 2: Identify Valid Time Expression**
+- The sentence containing the symptom is ""Presented with severe fatigue, Dizziness, and hypotension.""
+- This sentence does not contain any calendar time expressions (year, month, day).
+- Therefore, `time_found` is false.
+
+**Step 3: Normalize Time**
+- Since no valid time expression was found, the normalized time is ""None"".
+
+**Step 4: Format Output**
+- Combine the extracted symptom, sentence, time_found status, normalized time, and evidence sentence.<unused95>```json
+{
+  ""step1_extracted_symptom"": ""Dizziness"",
+  ""step1_complete_sentence"": ""Presented with severe fatigue, <symptom> Dizziness </symptom>, and hypotension."",
+  ""time_found"": false,
+  ""normalized_time"": ""None"",
+  ""evidence_sentence"": ""None""
+}
+```"
+17,R008,Fatigue,"Renal cell carcinoma on ipilimumab monotherapy. Presented with severe <symptom> Fatigue </symptom>, dizziness, and hypotension. Morning cortisol low, ACTH low. Suspect secondary adrenal insufficiency due to hypophysitis.","<unused94>thought
+The user wants me to extract a symptom, identify a valid time expression related to it, and normalize the time.
+
+**Step 1: Extract Symptom**
+- The symptom is marked as `<symptom> Fatigue </symptom>`.
+- The exact word/phrase is ""Fatigue"".
+- The full sentence is ""Presented with severe Fatigue, dizziness, and hypotension.""
+
+**Step 2: Identify Valid Time Expression**
+- The sentence containing the symptom is ""Presented with severe Fatigue, dizziness, and hypotension.""
+- This sentence does not contain any specific calendar time expression (Year, Month, Day).
+- Therefore, `time_found` is false.
+
+**Step 3: Normalize Time**
+- Since `time_found` is false, `normalized_time` will be ""None"".
+
+**Output Format**
+- `step1_extracted_symptom`: ""Fatigue""
+- `step1_complete_sentence`: ""Presented with severe Fatigue, dizziness, and hypotension.""
+- `time_found`: false
+- `normalized_time`: ""None""
+- `evidence_sentence`: ""None""<unused95>```json
+{
+  ""step1_extracted_symptom"": ""Fatigue"",
+  ""step1_complete_sentence"": ""Presented with severe Fatigue, dizziness, and hypotension."",
+  ""time_found"": false,
+  ""normalized_time"": ""None"",
+  ""evidence_sentence"": ""None""
+}
+```"
+18,R009,Erythema,"Metastatic melanoma on atezolizumab. Mild <symptom> erythema </symptom>tous rash on upper chest, responding to topical steroids. No GI or respiratory symptoms.","<unused94>thought
+The user wants me to extract a symptom, identify a valid time expression for it, and normalize the time.
+
+**Step 1: Extract Symptom**
+- The symptom is marked as `<symptom> erythema </symptom>tous rash on upper chest`.
+- The exact word or phrase inside the tags is `erythema`.
+- The full sentence containing the symptom is `Mild <symptom> erythema </symptom>tous rash on upper chest, responding to topical steroids.`.
+
+**Step 2: Identify Valid Time Expression**
+- The sentence `Mild <symptom> erythema </symptom>tous rash on upper chest, responding to topical steroids.` does not contain a specific calendar time expression (Year, Month, Day).
+- Therefore, `time_found` is false.
+
+**Step 3: Normalize Time**
+- Since no valid time expression was found, the normalized time will be None.
+
+**Output Format**
+```json
+{
+  ""step1_extracted_symptom"": ""erythema"",
+  ""step1_complete_sentence"": ""Mild <symptom> erythema </symptom>tous rash on upper chest, responding to topical steroids."",
+  ""time_found"": false,
+  ""normalized_time"": ""None"",
+  ""evidence_sentence"": ""None""
+}
+```<unused95>```json
+{
+  ""step1_extracted_symptom"": ""erythema"",
+  ""step1_complete_sentence"": ""Mild <symptom> erythema </symptom>tous rash on upper chest, responding to topical steroids."",
+  ""time_found"": false,
+  ""normalized_time"": ""None"",
+  ""evidence_sentence"": ""None""
+}
+```"
+19,R009,Rash,"Metastatic melanoma on atezolizumab. Mild erythematous <symptom> Rash </symptom> on upper chest, responding to topical steroids. No GI or respiratory symptoms.","<unused94>thought
+The user wants me to extract a symptom and its associated time expression from a clinical note.
+
+**Step 1: Extract the Symptom**
+- The symptom is marked as `<symptom> Rash </symptom>`.
+- The exact word/phrase is ""Rash"".
+- The full sentence containing the symptom is ""Mild erythematous Rash on upper chest, responding to topical steroids.""
+
+**Step 2: Identify a Valid Time Expression**
+- I need to check the sentence: ""Mild erythematous Rash on upper chest, responding to topical steroids.""
+- Does this sentence contain a valid time expression (Year, Month, or Day)?
+- No, it does not. There are no calendar dates or specific time references.
+- Therefore, `time_found` is false.
+
+**Step 3: Time Normalization**
+- Since `time_found` is false, the `normalized_time` should be None.
+
+**Step 4: Output Format**
+- `step1_extracted_symptom`: ""Rash""
+- `step1_complete_sentence`: ""Mild erythematous Rash on upper chest, responding to topical steroids.""
+- `time_found`: false
+- `normalized_time`: None
+- `evidence_sentence`: None (because no time was found)<unused95>```json
+{
+  ""step1_extracted_symptom"": ""Rash"",
+  ""step1_complete_sentence"": ""Mild erythematous Rash on upper chest, responding to topical steroids."",
+  ""time_found"": false,
+  ""normalized_time"": ""None"",
+  ""evidence_sentence"": ""None""
+}
+```"

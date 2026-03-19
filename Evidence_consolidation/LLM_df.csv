@@ -1,0 +1,24 @@
+report_id,standard_drug,standard_symptom,drug_negation,symptom_negation,cause_matches_input_drug,intervene_target_symtom,normalized_start_date_symptom,normalized_start_date_drug,symptom_start_date_earlier_than_drug,pred
+R001,nivolumab,Diarrhea,Y,N,O,N,None,None,N,0
+R001,nivolumab,Fatigue,Y,N,O,N,None,None,N,0
+R001,nivolumab,Rash,Y,N,O,N,None,None,N,0
+R002,pembrolizumab,Colitis,Y,N,O,N,None,None,N,0
+R002,pembrolizumab,Diarrhea,Y,Y,O,N,None,None,N,2
+R002,pembrolizumab,Fatigue,Y,Y,O,N,None,None,N,2
+R003,ipilimumab,Pruritus,Y,Y,O,N,None,None,N,2
+R003,ipilimumab,Rash,Y,Y,O,N,None,None,N,2
+R003,ipilimumab,Shortness of Breath,Y,N,O,N,None,None,N,0
+R003,nivolumab,Pruritus,Y,Y,O,N,None,None,N,2
+R003,nivolumab,Rash,Y,Y,O,N,None,None,N,2
+R003,nivolumab,Shortness of Breath,Y,N,O,N,None,None,N,0
+R006,pembrolizumab,Arthralgia,Y,N,O,N,None,None,N,0
+R006,pembrolizumab,Diarrhea,Y,N,O,N,None,None,N,0
+R006,pembrolizumab,Rash,Y,N,O,N,None,None,N,0
+R007,nivolumab,Arthritis,Y,Y,O,N,None,None,N,2
+R007,nivolumab,Rheumatology,Y,N,O,N,None,None,N,0
+R007,nivolumab,Stiffness,Y,Y,O,N,None,None,N,2
+R008,ipilimumab,Adrenal Insufficiency,Y,N,O,N,None,None,N,0
+R008,ipilimumab,Dizziness,Y,Y,O,N,None,None,N,2
+R008,ipilimumab,Fatigue,Y,Y,O,N,None,None,N,2
+R009,Atezolizumab,Erythema,Y,Y,O,Y,None,None,N,1
+R009,Atezolizumab,Rash,Y,Y,O,Y,None,None,N,1
