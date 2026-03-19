@@ -1,0 +1,11 @@
+report_id,standard_drug,matched_variant,start_index,variant_length,theword,drug_adjacent
+R001,nivolumab,NIVOLUMAB,53,9,nivolumab,"Patient with metastatic melanoma currently receiving <drug> NIVOLUMAB </drug> every 2 weeks. No new symptoms reported. Physical exam unremarkable. No evidence of rash, diarrhea, or fatigue."
+R002,pembrolizumab,PEMBROLIZUMAB,55,13,pembrolizumab,"The patient has stage IV non-small cell lung cancer on <drug> PEMBROLIZUMAB </drug> monotherapy. Over the past week, developed mild diarrhea and fatigue. Consider immune-mediated colitis; stool studies pending."
+R003,nivolumab,NIVOLUMAB,47,9,nivolumab,"History of renal cell carcinoma on combination <drug> NIVOLUMAB </drug> and ipilimumab. Reports pruritic rash over trunk and extremities, started 5 days ago. No shortness of breath."
+R003,ipilimumab,IPILIMUMAB,61,10,ipilimumab,"History of renal cell carcinoma on combination nivolumab and <drug> IPILIMUMAB </drug>. Reports pruritic rash over trunk and extremities, started 5 days ago. No shortness of breath."
+R004,Atezolizumab,Atezolizumab,45,12,atezolizumab,"Metastatic urothelial carcinoma treated with <drug> Atezolizumab </drug>. No immune-related toxicities noted. Energy level stable, appetite normal."
+R006,pembrolizumab,PEMBROLIZUMAB,20,13,pembrolizumab,"Melanoma patient on <drug> PEMBROLIZUMAB </drug> reports no new symptoms. Denies diarrhea, rash, or joint pain. Physical exam normal."
+R007,nivolumab,NIVOLUMAB,50,9,nivolumab,Stage IV small cell lung cancer patient receiving <drug> NIVOLUMAB </drug>. Developed new polyarthritis and morning stiffness over past 2 weeks. ESR elevated. Rheumatology consult planned.
+R008,ipilimumab,IPILIMUMAB,24,10,ipilimumab,"Renal cell carcinoma on <drug> IPILIMUMAB </drug> monotherapy. Presented with severe fatigue, dizziness, and hypotension. Morning cortisol low, ACTH low. Suspect secondary adrenal insufficiency due to hypophysitis."
+R009,Atezolizumab,Atezolizumab,23,12,atezolizumab,"Metastatic melanoma on <drug> Atezolizumab </drug>. Mild erythematous rash on upper chest, responding to topical steroids. No GI or respiratory symptoms."
+R010,pembrolizumab,PEMBROLIZUMAB,27,13,pembrolizumab,NSCLC patient treated with <drug> PEMBROLIZUMAB </drug>. Reports no immune-related adverse events. Imaging shows partial response to therapy.

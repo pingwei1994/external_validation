@@ -1,0 +1,21 @@
+report_id,standard_symptom,symptom_adjacent
+R001,Diarrhea,"Patient with metastatic melanoma currently receiving nivolumab every 2 weeks. No new symptoms reported. Physical exam unremarkable. No evidence of rash, <symptom> diarrhea </symptom>, or fatigue."
+R001,Fatigue,"Patient with metastatic melanoma currently receiving nivolumab every 2 weeks. No new symptoms reported. Physical exam unremarkable. No evidence of rash, diarrhea, or <symptom> Fatigue </symptom>."
+R001,Rash,"Patient with metastatic melanoma currently receiving nivolumab every 2 weeks. No new symptoms reported. Physical exam unremarkable. No evidence of <symptom> Rash </symptom>, diarrhea, or fatigue."
+R002,Colitis,"The patient has stage IV non-small cell lung cancer on pembrolizumab monotherapy. Over the past week, developed mild diarrhea and fatigue. Consider immune-mediated <symptom> colitis </symptom>; stool studies pending."
+R002,Diarrhea,"The patient has stage IV non-small cell lung cancer on pembrolizumab monotherapy. Over the past week, developed mild <symptom> diarrhea </symptom> and fatigue. Consider immune-mediated colitis; stool studies pending."
+R002,Fatigue,"The patient has stage IV non-small cell lung cancer on pembrolizumab monotherapy. Over the past week, developed mild diarrhea and <symptom> Fatigue </symptom>. Consider immune-mediated colitis; stool studies pending."
+R003,Pruritus,"History of renal cell carcinoma on combination nivolumab and ipilimumab. Reports <symptom> prurit </symptom>ic rash over trunk and extremities, started 5 days ago. No shortness of breath."
+R003,Rash,"History of renal cell carcinoma on combination nivolumab and ipilimumab. Reports pruritic <symptom> Rash </symptom> over trunk and extremities, started 5 days ago. No shortness of breath."
+R003,Shortness of Breath,"History of renal cell carcinoma on combination nivolumab and ipilimumab. Reports pruritic rash over trunk and extremities, started 5 days ago. No <symptom> shortness of breath </symptom>."
+R006,Arthralgia,"Melanoma patient on pembrolizumab reports no new symptoms. Denies diarrhea, rash, or <symptom> joint pain </symptom>. Physical exam normal."
+R006,Diarrhea,"Melanoma patient on pembrolizumab reports no new symptoms. Denies <symptom> diarrhea </symptom>, rash, or joint pain. Physical exam normal."
+R006,Rash,"Melanoma patient on pembrolizumab reports no new symptoms. Denies diarrhea, <symptom> Rash </symptom>, or joint pain. Physical exam normal."
+R007,Arthritis,Stage IV small cell lung cancer patient receiving nivolumab. Developed new poly<symptom> Arthritis </symptom> and morning stiffness over past 2 weeks. ESR elevated. Rheumatology consult planned.
+R007,Rheumatology,Stage IV small cell lung cancer patient receiving nivolumab. Developed new polyarthritis and morning stiffness over past 2 weeks. ESR elevated. <symptom> RHEUMATOLOGY </symptom> consult planned.
+R007,Stiffness,Stage IV small cell lung cancer patient receiving nivolumab. Developed new polyarthritis and morning <symptom> stiffness </symptom> over past 2 weeks. ESR elevated. Rheumatology consult planned.
+R008,Adrenal Insufficiency,"Renal cell carcinoma on ipilimumab monotherapy. Presented with severe fatigue, dizziness, and hypotension. Morning cortisol low, ACTH low. Suspect secondary <symptom> Adrenal insufficiency </symptom> due to hypophysitis."
+R008,Dizziness,"Renal cell carcinoma on ipilimumab monotherapy. Presented with severe fatigue, <symptom> Dizziness </symptom>, and hypotension. Morning cortisol low, ACTH low. Suspect secondary adrenal insufficiency due to hypophysitis."
+R008,Fatigue,"Renal cell carcinoma on ipilimumab monotherapy. Presented with severe <symptom> Fatigue </symptom>, dizziness, and hypotension. Morning cortisol low, ACTH low. Suspect secondary adrenal insufficiency due to hypophysitis."
+R009,Erythema,"Metastatic melanoma on atezolizumab. Mild <symptom> erythema </symptom>tous rash on upper chest, responding to topical steroids. No GI or respiratory symptoms."
+R009,Rash,"Metastatic melanoma on atezolizumab. Mild erythematous <symptom> Rash </symptom> on upper chest, responding to topical steroids. No GI or respiratory symptoms."
