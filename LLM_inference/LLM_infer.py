@@ -7,11 +7,6 @@ from transformers import BitsAndBytesConfig, pipeline
 import torch
 
 
-```
-
-
-```
-
 
 def load_config(p):
     with open('config_instruction.yaml', 'r', encoding='utf-8') as f:
