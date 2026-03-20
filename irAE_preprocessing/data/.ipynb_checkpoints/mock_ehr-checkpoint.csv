@@ -1,0 +1,11 @@
+patient_index,report_id,notes
+P001,R001,"Patient with metastatic melanoma currently receiving nivolumab every 2 weeks. No new symptoms reported. Physical exam unremarkable. No evidence of rash, diarrhea, or fatigue."
+P002,R002,"The patient has stage IV non-small cell lung cancer on pembrolizumab monotherapy. Over the past week, developed mild diarrhea and fatigue. Consider immune-mediated colitis; stool studies pending."
+P003,R003,"History of renal cell carcinoma on combination nivolumab and ipilimumab. Reports pruritic rash over trunk and extremities, started 5 days ago. No shortness of breath."
+P004,R004,"Metastatic urothelial carcinoma treated with atezolizumab. No immune-related toxicities noted. Energy level stable, appetite normal."
+P005,R005,"Patient with head and neck squamous cell carcinoma receiving durvalumab. Presents with new onset dyspnea and dry cough. CT chest shows bilateral ground-glass opacities. Suspect immune-related pneumonitis."
+P006,R006,"Melanoma patient on pembrolizumab reports no new symptoms. Denies diarrhea, rash, or joint pain. Physical exam normal."
+P007,R007,"Stage IV small cell lung cancer patient receiving nivolumab. Developed new polyarthritis and morning stiffness over past 2 weeks. ESR elevated. Rheumatology consult planned."
+P008,R008,"Renal cell carcinoma on ipilimumab monotherapy. Presented with severe fatigue, dizziness, and hypotension. Morning cortisol low, ACTH low. Suspect secondary adrenal insufficiency due to hypophysitis."
+P009,R009,"Metastatic melanoma on atezolizumab. Mild erythematous rash on upper chest, responding to topical steroids. No GI or respiratory symptoms."
+P010,R010,"NSCLC patient treated with pembrolizumab. Reports no immune-related adverse events. Imaging shows partial response to therapy."
