@@ -7,6 +7,12 @@ from transformers import BitsAndBytesConfig, pipeline
 import torch
 
 
+```
+
+
+```
+
+
 def load_config(p):
     with open('config_instruction.yaml', 'r', encoding='utf-8') as f:
         config = yaml.safe_load(f)
@@ -85,6 +91,8 @@ def calling_llm(messages, pipe):
 
 def main():
     pipe = load_model()
+    folder_path = "./llm_results"
+    os.makedirs(folder_path, exist_ok=True)
     for index in ['p1', 'p2', 'p3', 'p4', 'p5', 'p6']:
         
         input_path = f'../irAE_preprocessing/data/dfs_llm/df{index[-1]}.csv'
