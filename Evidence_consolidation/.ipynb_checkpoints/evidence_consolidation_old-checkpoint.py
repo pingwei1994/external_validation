@@ -11,18 +11,12 @@ import json
 
 def parse_response(response_string):
     pattern = r'```json\s*(.*?)\s*```'
+    match = re.search(pattern, response_string, re.DOTALL)
 
-    try:
-        match = re.search(pattern, response_string.split('<unused95>')[1], re.DOTALL)
-    except:
-        match = re.search(pattern, response_string, re.DOTALL)
-
-        
     if match:
         content = match.group(1).strip()
     else:
         content = response_string.strip()
-
 
     # 1️⃣ 先尝试正常 json
     try:
@@ -37,11 +31,11 @@ def parse_response(response_string):
         # 只替换 value 是 None 的情况
         # 匹配 : None  或  :None
         cleaned = re.sub(r':\s*None\b', r': "None"', cleaned)
-        cleaned = re.sub(r'\bTrue\b', 'true', cleaned)
-        cleaned = re.sub(r'\bFalse\b', 'false', cleaned)
+
         # 删除可能的 trailing comma
         cleaned = re.sub(r',\s*}', '}', cleaned)
         cleaned = re.sub(r',\s*]', ']', cleaned)
+
         return json.loads(cleaned)
     except json.JSONDecodeError:
         pass
@@ -60,29 +54,9 @@ def parse_response(response_string):
     except:
         return 'parse_failed'
 
-
-def normalize_booleans(obj):
-    if isinstance(obj, dict):
-        return {k: normalize_booleans(v) for k, v in obj.items()}
-    
-    elif isinstance(obj, list):
-        return [normalize_booleans(v) for v in obj]
-    
-    elif isinstance(obj, str):
-        val = obj.strip().lower()
-        
-        if val == 'true':
-            return True
-        elif val == 'false':
-            return False
-        return obj
-    
-    else:
-        return obj
-
 def dedup_parse(dfi):
     dfi = dfi.drop_duplicates().copy()
-    dfi['llm_output'] = dfi['output'].apply(lambda x: normalize_booleans(parse_response(x)))
+    dfi['llm_output'] = dfi['output'].apply(lambda x: parse_response(x))
     return dfi
 
 
@@ -210,67 +184,6 @@ def ec(x):
 
 
 
-# def main():
-#     p1 = pd.read_csv('../LLM_inference/llm_results/llm_df1.csv')
-#     p2 = pd.read_csv('../LLM_inference/llm_results/llm_df2.csv')
-#     p3 = pd.read_csv('../LLM_inference/llm_results/llm_df3.csv')
-#     p4 = pd.read_csv('../LLM_inference/llm_results/llm_df4.csv')
-#     p5 = pd.read_csv('../LLM_inference/llm_results/llm_df5.csv')
-#     p6 = pd.read_csv('../LLM_inference/llm_results/llm_df6.csv')
-#     df1 = dedup_parse(p1)
-#     df1 = df1[df1['report_id']!='report_id'].copy()
-#     df1['drug_negation'] = df1['llm_output'].apply(lambda x: x['step_3_drug_exposure'] if x!='parse_failed' else x)
-#     df2 = dedup_parse(p2)
-#     df2 = df2[df2['report_id']!='report_id'].copy()
-#     df2['symptom_negation'] = df2['llm_output'].apply(lambda x: x['step2_analysis']['label'] if x!='parse_failed' else x)
-#     df2['symptom_negation'] = df2['symptom_negation'].apply(lambda x: 'N' if x=='NO CLEAR EVIDENCE OF SYMPTOM IN PATIENT' else 'Y')
-#     df3 = dedup_parse(p3)
-#     df3 = df3[df3['report_id']!='report_id'].copy()
-#     df3['cause_matches_input_drug'] = df3['llm_output'].apply(lambda x: x['etiology_classification'] if x!='parse_failed' else 'PARSING_ERROR')
-#     df3['cause_matches_input_drug'] = df3['cause_matches_input_drug'].apply(lambda x: 'Y' if x=='highly_suspect_drug_related' else ('N' if x=='highly_suspect_other_etiology' else 'O'))
-#     df4 = dedup_parse(p4)
-#     df4 = df4[df4['report_id']!='report_id'].copy()
-    
-#     df4['steroid_for_symptom'] = df4['llm_output'].apply(lambda x: x['steroid_for_symptom'] if x!='parse_failed' else 'parse_failed')
-#     df4['immunotherapy_hold_for_symptom'] = df4['llm_output'].apply(lambda x: x['immunotherapy_hold_for_symptom'] if x!='parse_failed' else 'parse_failed')
-#     df4['intervene_target_symtom'] = df4.apply(lambda x: 'N' if x['steroid_for_symptom']==False and x['immunotherapy_hold_for_symptom']==False else 'Y', axis=1)
-#     df5 = dedup_parse(p5)
-#     df5 = df5[df5['report_id']!='report_id'].copy()
-    
-#     df5['normalized_start_date_drug'] = df5['llm_output'].apply(lambda x: x['normalized_start_date'] if x!='parse_failed' else 'parse_failed')
-    
-#     df6 = dedup_parse(p6)
-#     df6 = df6[df6['report_id']!='report_id'].copy()
-    
-#     df6['normalized_start_date_symptom'] = df6['llm_output'].apply(lambda x: x['normalized_time'] if x!='parse_failed' else 'parse_failed')
-    
-#     df67 = df6[['report_id', 'standard_symptom', 'normalized_start_date_symptom']].merge(df5[['report_id', 'standard_drug', 'normalized_start_date_drug']], on=['report_id'], how='left')
-
-#     df67['symptom_start_date_earlier_than_drug'] = df67.apply(symptom_earlier_than_drug, axis=1)
-
-#     modeldf3 = df3[['report_id', 'standard_drug', 'standard_symptom', 'cause_matches_input_drug']].copy()
-#     modeldf2 = df2[['report_id', 'standard_symptom', 'symptom_negation']].copy()
-#     modeldf4 = df4[['report_id', 'standard_symptom', 'intervene_target_symtom']].copy()
-#     modeldf1 = df1.groupby(['report_id', 'standard_drug'], as_index=False).agg({'drug_negation':lambda x: 'Y' if "Confirmed" in x.values else 'N'})
-#     modeldf67 = df67[['report_id', 'standard_drug', 'standard_symptom','normalized_start_date_symptom', 'normalized_start_date_drug','symptom_start_date_earlier_than_drug']].copy()
-
-#     result = modeldf3.merge(modeldf2, on = ['report_id',  'standard_symptom'], how = 'left')
-#     result = result.merge(modeldf4, on=['report_id', 'standard_symptom'], how='left')
-#     result = result.merge(modeldf1, on=['report_id', 'standard_drug'], how='left')
-#     result = result.merge(modeldf67, on=['report_id', 'standard_drug','standard_symptom'], how='left')
-#     results = select_priority_combination(
-#         df=result,
-#         group_cols = ["report_id", "standard_drug", "standard_symptom"],
-#         combo_cols = ["drug_negation", "symptom_negation", "cause_matches_input_drug", "intervene_target_symtom"],
-#         priority_order = info_order,
-#         drop_temp_cols=True,
-#         unknown_strategy="error"  # "error" | "last"
-#     )[['report_id', 'standard_drug', 'standard_symptom', "drug_negation", "symptom_negation", "cause_matches_input_drug", "intervene_target_symtom", 'normalized_start_date_symptom', 'normalized_start_date_drug',"symptom_start_date_earlier_than_drug"]]
-#     results['pred'] = results.apply(lambda x: ec(x), axis=1)
-#     results.to_csv('LLM_df.csv', index=False)
-
-
-
 def main():
     p1 = pd.read_csv('../LLM_inference/llm_results/llm_df1.csv')
     p2 = pd.read_csv('../LLM_inference/llm_results/llm_df2.csv')
@@ -281,33 +194,32 @@ def main():
     df1 = dedup_parse(p1)
     df1 = df1[df1['report_id']!='report_id'].copy()
     df1['drug_negation'] = df1['llm_output'].apply(lambda x: x['step_3_drug_exposure'] if x!='parse_failed' else x)
-    
     df2 = dedup_parse(p2)
     df2 = df2[df2['report_id']!='report_id'].copy()
     df2['symptom_negation'] = df2['llm_output'].apply(lambda x: x['step2_analysis']['label'] if x!='parse_failed' else x)
     df2['symptom_negation'] = df2['symptom_negation'].apply(lambda x: 'N' if x=='NO CLEAR EVIDENCE OF SYMPTOM IN PATIENT' else 'Y')
-    
     df3 = dedup_parse(p3)
     df3 = df3[df3['report_id']!='report_id'].copy()
     df3['cause_matches_input_drug'] = df3['llm_output'].apply(lambda x: x['etiology_classification'] if x!='parse_failed' else 'PARSING_ERROR')
     df3['cause_matches_input_drug'] = df3['cause_matches_input_drug'].apply(lambda x: 'Y' if x=='highly_suspect_drug_related' else ('N' if x=='highly_suspect_other_etiology' else 'O'))
-
-    
     df4 = dedup_parse(p4)
     df4 = df4[df4['report_id']!='report_id'].copy()
+    
     df4['steroid_for_symptom'] = df4['llm_output'].apply(lambda x: x['steroid_for_symptom'] if x!='parse_failed' else 'parse_failed')
     df4['immunotherapy_hold_for_symptom'] = df4['llm_output'].apply(lambda x: x['immunotherapy_hold_for_symptom'] if x!='parse_failed' else 'parse_failed')
-    df4['intervene_target_symtom'] = df4.apply(lambda x: 'N' if x['steroid_for_symptom']=='parse_failed' else ('N' if x['steroid_for_symptom']==False and x['immunotherapy_hold_for_symptom']==False else 'Y'), axis=1)
-    
+    df4['intervene_target_symtom'] = df4.apply(lambda x: 'N' if x['steroid_for_symptom']==False and x['immunotherapy_hold_for_symptom']==False else 'Y', axis=1)
     df5 = dedup_parse(p5)
     df5 = df5[df5['report_id']!='report_id'].copy()
+    
     df5['normalized_start_date_drug'] = df5['llm_output'].apply(lambda x: x['normalized_start_date'] if x!='parse_failed' else 'parse_failed')
     
     df6 = dedup_parse(p6)
     df6 = df6[df6['report_id']!='report_id'].copy()
+    
     df6['normalized_start_date_symptom'] = df6['llm_output'].apply(lambda x: x['normalized_time'] if x!='parse_failed' else 'parse_failed')
     
     df67 = df6[['report_id', 'standard_symptom', 'normalized_start_date_symptom']].merge(df5[['report_id', 'standard_drug', 'normalized_start_date_drug']], on=['report_id'], how='left')
+
     df67['symptom_start_date_earlier_than_drug'] = df67.apply(symptom_earlier_than_drug, axis=1)
 
     modeldf3 = df3[['report_id', 'standard_drug', 'standard_symptom', 'cause_matches_input_drug']].copy()
@@ -330,8 +242,6 @@ def main():
     )[['report_id', 'standard_drug', 'standard_symptom', "drug_negation", "symptom_negation", "cause_matches_input_drug", "intervene_target_symtom", 'normalized_start_date_symptom', 'normalized_start_date_drug',"symptom_start_date_earlier_than_drug"]]
     results['pred'] = results.apply(lambda x: ec(x), axis=1)
     results.to_csv('LLM_df.csv', index=False)
-
-
 
 
 if __name__ == "__main__":
